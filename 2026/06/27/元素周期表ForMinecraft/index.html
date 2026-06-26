@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>元素周期表ForMinecraft | Vvoch の Blog</title><meta name="author" content="Vvoch"><meta name="copyright" content="Vvoch"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="作者声明：本文章部分使用AI查询资料 MC“元素周期表”模组：Fabric 环境下的性能优化方案一、什么是“元素周期表”模组？“元素周期表”是 Minecraft 社区对一系列以化学元素命名的优化模组的统称 参考来源: Mcmod。 这个称呼的由来很简单：Sodium（钠） 是第一个打出名气的优化模组，对游戏性能的提升非常显著，帧数表现极其稳定，因此知名度极高 参考来源: Modrinth。随后越">
+<meta property="og:type" content="article">
+<meta property="og:title" content="元素周期表ForMinecraft">
+<meta property="og:url" content="https://jvvoch.space/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/index.html">
+<meta property="og:site_name" content="Vvoch の Blog">
+<meta property="og:description" content="作者声明：本文章部分使用AI查询资料 MC“元素周期表”模组：Fabric 环境下的性能优化方案一、什么是“元素周期表”模组？“元素周期表”是 Minecraft 社区对一系列以化学元素命名的优化模组的统称 参考来源: Mcmod。 这个称呼的由来很简单：Sodium（钠） 是第一个打出名气的优化模组，对游戏性能的提升非常显著，帧数表现极其稳定，因此知名度极高 参考来源: Modrinth。随后越">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn1.vvoch.chat/blog/JAVA/%E9%92%A0LOGO.png">
+<meta property="article:published_time" content="2026-06-26T17:13:48.000Z">
+<meta property="article:modified_time" content="2026-06-26T17:43:53.871Z">
+<meta property="article:author" content="Vvoch">
+<meta property="article:tag" content="MC">
+<meta property="article:tag" content="教程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn1.vvoch.chat/blog/JAVA/%E9%92%A0LOGO.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "元素周期表ForMinecraft",
+  "url": "https://jvvoch.space/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/",
+  "image": "https://cdn1.vvoch.chat/blog/JAVA/%E9%92%A0LOGO.png",
+  "datePublished": "2026-06-26T17:13:48.000Z",
+  "dateModified": "2026-06-26T17:43:53.871Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Vvoch",
+      "url": "https://jvvoch.space"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn1.vvoch.chat/blog/QQ%E5%9B%BE%E7%89%8720260621152748.png"><link rel="canonical" href="https://jvvoch.space/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Vvoch","link":"链接: ","source":"来源: Vvoch の Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '元素周期表ForMinecraft',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" /><link rel="manifest" href="/site.webmanifest" /><link rel="stylesheet" href="/css/font.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(https://cdn1.vvoch.chat/blog/RikkaBackgr.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn1.vvoch.chat/blog/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn1.vvoch.chat/blog/JAVA/%E9%92%A0LOGO.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Vvoch の Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">元素周期表ForMinecraft</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">元素周期表ForMinecraft</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-26T17:13:48.000Z" title="发表于 2026-06-27 01:13 01:13:48">2026-06-27 01:13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-26T17:43:53.871Z" title="更新于 2026-06-27 01:43 01:43:53">2026-06-27 01:43</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>作者声明：本文章部分使用AI查询资料</p>
+<h1 id="MC“元素周期表”模组：Fabric-环境下的性能优化方案"><a href="#MC“元素周期表”模组：Fabric-环境下的性能优化方案" class="headerlink" title="MC“元素周期表”模组：Fabric 环境下的性能优化方案"></a>MC“元素周期表”模组：Fabric 环境下的性能优化方案</h1><h2 id="一、什么是“元素周期表”模组？"><a href="#一、什么是“元素周期表”模组？" class="headerlink" title="一、什么是“元素周期表”模组？"></a>一、什么是“元素周期表”模组？</h2><p>“元素周期表”是 Minecraft 社区对一系列以化学元素命名的优化模组的统称 <a target="_blank" rel="noopener" href="https://www.mcmod.cn/class/5749.html">参考来源: Mcmod</a>。</p>
+<p>这个称呼的由来很简单：<strong>Sodium（钠）</strong> 是第一个打出名气的优化模组，对游戏性能的提升非常显著，帧数表现极其稳定，因此知名度极高 <a target="_blank" rel="noopener" href="https://modrinth.com/mod/sodium">参考来源: Modrinth</a>。随后越来越多的优化模组效仿 Sodium 的命名方式，纷纷以元素周期表中的元素命名，社区便形象地将它们统称为“元素周期表” <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/sodium-fabric">参考来源: Github</a>。</p>
+<blockquote>
+<p><strong>注意</strong>：“元素周期表”并非一个整合包或单一模组，而是一个<strong>模组集合的统称</strong>。你需要根据需求分别下载对应的模组文件。</p>
+</blockquote>
+<h2 id="二、核心成员：Sodium（钠）"><a href="#二、核心成员：Sodium（钠）" class="headerlink" title="二、核心成员：Sodium（钠）"></a>二、核心成员：Sodium（钠）</h2><p><strong>定位</strong>：渲染引擎优化模组</p>
+<p>Sodium 是一个适用于 <strong>Minecraft 1.16+</strong> 客户端的免费、强大的渲染引擎优化模组 <a target="_blank" rel="noopener" href="https://modrinth.com/mod/sodium/versions">参考来源: Modrinth</a>。它在修复一些图形问题的同时，<strong>大幅提高了渲染性能</strong> <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/sodium-fabric/wiki/FAQ">参考来源: Github</a>。</p>
+<h3 id="核心作用"><a href="#核心作用" class="headerlink" title="核心作用"></a>核心作用</h3><p>Sodium 完全重写了游戏的原版渲染引擎，使其速度更快、效率更高 <a target="_blank" rel="noopener" href="https://caffeinemc.net/sodium">参考来源: Github</a>。根据官方数据，<strong>FPS 通常可提高 300% 或更多</strong> <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/sodium-fabric#sodium">参考来源: Github</a>。同时它还能减少微卡顿（micro-stutter），让游戏运行更加丝滑。</p>
+<h3 id="关键特性"><a href="#关键特性" class="headerlink" title="关键特性"></a>关键特性</h3><ul>
+<li><strong>不改变原版画面</strong>：Sodium 的优化不会影响游戏的视觉效果，让你体验到原汁原味的方块游戏。</li>
+<li><strong>广泛的模组兼容性</strong>：与 Fabric 模组生态系统具有广泛的兼容性。</li>
+<li><strong>即装即用</strong>：默认情况下，Sodium 会启用系统支持的所有优化，一般不需要手动配置。</li>
+</ul>
+<h3 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h3><p>Sodium 是一个 <strong>Fabric 模组</strong>，需要 <strong>Fabric Loader</strong> 作为前置 <a target="_blank" rel="noopener" href="https://fabricmc.net/use/installer/">参考来源: Github</a>。安装 Fabric Loader 后，将 Sodium 的 JAR 文件放入 <code>mods</code> 文件夹即可。</p>
+<blockquote>
+<p><strong>兼容性警告</strong>：Sodium <strong>与 OptiFine（高清修复）不兼容</strong> <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/sodium-fabric/wiki/FAQ#can-i-use-sodium-with-optifine">参考来源: Github</a>。如果你之前在使用 OptiFine，需要先将其移除。</p>
+</blockquote>
+<h3 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h3><ul>
+<li>Sodium 0.9.x 已支持 Minecraft 26.2，并包含对 Vulkan 的早期支持 <a target="_blank" rel="noopener" href="https://modrinth.com/mod/sodium/versions">参考来源: Modrinth</a>。</li>
+<li>Sodium 0.6.0 及以上版本<strong>不需要</strong>也不兼容 <code>Indium（铟）</code> 这个兼容性模组 <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/sodium-fabric/wiki/Indium-Compatibility">参考来源: Github</a>。</li>
+</ul>
+<h2 id="三、辅助成员：Lithium（锂）"><a href="#三、辅助成员：Lithium（锂）" class="headerlink" title="三、辅助成员：Lithium（锂）"></a>三、辅助成员：Lithium（锂）</h2><p><strong>定位</strong>：游戏逻辑运算优化模组</p>
+<p>Lithium 是一个自由及开源的优化模组，与 Sodium 专注于渲染不同，Lithium 致力于<strong>优化游戏的各种逻辑系统</strong> <a target="_blank" rel="noopener" href="https://modrinth.com/mod/lithium">参考来源: Modrinth</a>。</p>
+<h3 id="核心作用-1"><a href="#核心作用-1" class="headerlink" title="核心作用"></a>核心作用</h3><p>Lithium 在不修改原版机制的前提下，改善多种原版机制的计算方法 <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/lithium-fabric">参考来源: Github</a>，包括：</p>
+<ul>
+<li><strong>物理系统优化</strong>：减少碰撞箱的分辨率复杂度，优化实体碰撞检测。</li>
+<li><strong>生物 AI 优化</strong>：使用基于事件的系统减少 CPU 占用，生物在不同 AI 任务间的切换更快。</li>
+<li><strong>世界生成优化</strong>：移除不必要的计算，显著降低生成新区块时的性能开销。</li>
+<li><strong>区块加载优化</strong>：玩家探索世界时 TPS 下降更少，加载时间缩短。</li>
+<li><strong>刷怪塔优化</strong>：优化实体碰撞处理，显著降低刷怪塔对服务器 TPS 的影响。</li>
+</ul>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>Lithium 分为 <strong>Fabric 和 NeoForge 两个版本</strong> <a target="_blank" rel="noopener" href="https://modrinth.com/mod/lithium/versions">参考来源: Modrinth</a>。可单独安装至客户端或服务器任意一端——服务端安装时客户端无需安装，反之亦然。</p>
+<blockquote>
+<p><strong>注意</strong>：Lithium <strong>不再更新 Forge 版本</strong>，现仅支持 Fabric 和 NeoForge <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/lithium-fabric/issues/769">参考来源: Github</a>。</p>
+</blockquote>
+<p>Sodium 官方文档明确指出：<strong>建议同时安装 Lithium 来优化游戏的其他部分</strong> <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/sodium-fabric/wiki/FAQ#what-other-mods-do-you-recommend">参考来源: Github</a>。</p>
+<h2 id="四、辅助成员：Phosphor（磷）"><a href="#四、辅助成员：Phosphor（磷）" class="headerlink" title="四、辅助成员：Phosphor（磷）"></a>四、辅助成员：Phosphor（磷）</h2><p><strong>定位</strong>：光照引擎优化模组</p>
+<p>Phosphor 是一个致力于优化 Minecraft 中<strong>优化最差的部分——光照引擎</strong>的模组 <a target="_blank" rel="noopener" href="https://modrinth.com/mod/phosphor">参考来源: Modrinth</a>。</p>
+<h3 id="核心作用-2"><a href="#核心作用-2" class="headerlink" title="核心作用"></a>核心作用</h3><ul>
+<li><strong>大幅降低区块生成时间</strong>：使用 Phosphor 后，在某些维度下游戏生成区块所用时间<strong>可减半</strong>，生成整个世界的时间也将大幅降低 <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/phosphor-fabric#phosphor">参考来源: Github</a>。</li>
+<li><strong>修复光照错误</strong>：修复了一些长期存在的光照引擎 bug。</li>
+<li><strong>服务端&#x2F;客户端通用</strong>：支持客户端和服务器，服务端安装时客户端无需安装。</li>
+<li><strong>不改变原版特性</strong>：Phosphor 不会改变原版游戏的特性，且支持绝大多数地形模组。</li>
+</ul>
+<h3 id="重要状态说明"><a href="#重要状态说明" class="headerlink" title="重要状态说明"></a>重要状态说明</h3><p><strong>Phosphor 已停止维护</strong> <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/phosphor-fabric/issues/168">参考来源: Github</a>。自 Minecraft 1.20 版本以来，游戏的光照引擎已经有了显著改进，Phosphor 的大部分补丁已不再适用或有用 <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/phosphor-fabric#status">参考来源: Github</a>。</p>
+<ul>
+<li>如果你使用 <strong>1.20 及以上版本</strong>：<strong>不需要</strong>安装 Phosphor <a target="_blank" rel="noopener" href="https://modrinth.com/mod/phosphor">参考来源: Modrinth</a>。</li>
+<li>如果你使用 <strong>1.20 以下版本</strong>：Phosphor 仍然有效，可以继续使用。</li>
+</ul>
+<blockquote>
+<p><strong>兼容性</strong>：Phosphor <strong>不兼容 Starlight（星光）</strong> ，因为二者都重写了光照引擎。请二选一 <a target="_blank" rel="noopener" href="https://github.com/CaffeineMC/phosphor-fabric#starlight-compatibility">参考来源: Github</a>。</p>
+</blockquote>
+<h2 id="五、元素周期表完整组合安装指南"><a href="#五、元素周期表完整组合安装指南" class="headerlink" title="五、元素周期表完整组合安装指南"></a>五、元素周期表完整组合安装指南</h2><h3 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h3><ul>
+<li><strong>Minecraft 版本</strong>：1.16.5 或更高版本 <a target="_blank" rel="noopener" href="https://fabricmc.net/wiki/versions">参考来源: Github</a></li>
+<li><strong>模组加载器</strong>：Fabric 或 NeoForge</li>
+<li><strong>Java 运行环境</strong>：建议 Java 17 或更高版本</li>
+</ul>
+<h3 id="推荐组合（按优先级）"><a href="#推荐组合（按优先级）" class="headerlink" title="推荐组合（按优先级）"></a>推荐组合（按优先级）</h3><table>
+<thead>
+<tr>
+<th>模组</th>
+<th>必要性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Fabric Loader</strong></td>
+<td>必装</td>
+<td>模组加载器基础 <a target="_blank" rel="noopener" href="https://fabricmc.net/use/installer/">参考来源: Github</a></td>
+</tr>
+<tr>
+<td><strong>Sodium（钠）</strong></td>
+<td>必装</td>
+<td>渲染优化核心 <a target="_blank" rel="noopener" href="https://modrinth.com/mod/sodium">参考来源: Modrinth</a></td>
+</tr>
+<tr>
+<td><strong>Lithium（锂）</strong></td>
+<td>推荐</td>
+<td>逻辑运算优化 <a target="_blank" rel="noopener" href="https://modrinth.com/mod/lithium">参考来源: Modrinth</a></td>
+</tr>
+<tr>
+<td><strong>Phosphor（磷）</strong></td>
+<td>1.20以下推荐</td>
+<td>光照优化（1.20+ 不需要） <a target="_blank" rel="noopener" href="https://modrinth.com/mod/phosphor">参考来源: Modrinth</a></td>
+</tr>
+<tr>
+<td><strong>Fabric API</strong></td>
+<td>推荐</td>
+<td>许多模组的前置 <a target="_blank" rel="noopener" href="https://modrinth.com/mod/fabric-api">参考来源: Modrinth</a></td>
+</tr>
+</tbody></table>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>适用场景</th>
+<th>推荐组合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>纯性能优化（Fabric）</strong></td>
+<td>不玩光影，只求流畅</td>
+<td>Sodium + Lithium +（1.20以下加 Phosphor） <a target="_blank" rel="noopener" href="https://modrinth.com/mod/sodium">参考来源: Modrinth</a></td>
+</tr>
+<tr>
+<td><strong>纯性能优化（Forge）</strong></td>
+<td>Forge 环境下的替代</td>
+<td>Embeddium + Canary（或 Starlight） <a target="_blank" rel="noopener" href="https://modrinth.com/mod/embeddium">参考来源: Modrinth</a></td>
+</tr>
+</tbody></table>
+<p>这套“元素周期表”组合，是目前 Fabric 环境下<strong>性能最优、兼容性最好、完全开源</strong>的优化方案，能显著提升游戏帧率并减少卡顿，值得每一位注重流畅度的玩家尝试。</p>
+<p>快速返回<code>Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程</code>链接：–&gt;<a href="/2026/06/25/Minecraft%20Java版（Windows）下载、Mod安装与联机保姆级教程/#2-1、游戏各版本区别">点我</a>&lt;–</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://jvvoch.space">Vvoch</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://jvvoch.space/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/">https://jvvoch.space/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://jvvoch.space" target="_blank">Vvoch の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/MC/">MC</a></div><div class="post-share"><div class="social-share" data-image="https://cdn1.vvoch.chat/blog/JAVA/%E9%92%A0LOGO.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/06/27/Iris-Fabric%E4%B8%8B%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%85%89%E5%BD%B1%E5%8A%A0%E8%BD%BD%E6%96%B9%E6%A1%88/" title="Iris:Fabric下的现代光影加载方案"><img class="cover" src="https://cdn1.vvoch.chat/blog/JAVA/IrisLOGO.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Iris:Fabric下的现代光影加载方案</div></div><div class="info-2"><div class="info-item-1">作者声明：本文章部分使用AI查询资料 Iris Shaders：Fabric 环境下的现代光影加载方案一、Iris Shaders 是什么？Iris Shaders 是一个现代、开源的光影模组，专门为 Minecraft Java Edition 的 Fabric 模组环境设计 参考来源: Github。它的核心目标是：让 Fabric 玩家能够使用现有的 OptiFine 格式光影包，同时获得比传统方案更高的帧率和更好的模组兼容性。 在 Iris 出现之前，Fabric 玩家若想使用光影，通常需要安装 OptiFabric（一个让 OptiFine 在 Fabric 上运行的“转接器”），这种方式稳定性差、兼容性问题频发 参考来源: Github。Iris 彻底解决了这个问题，成为 Fabric 下 OptiFabric + OptiFine 光影方案的有效替代品。 Iris 完全开源。参考来源: Github，与 OptiFine 的闭源性质形成鲜明对比。 二、Iris 与 Sodium（钠）的关系Iris 依赖 Sodium 才能工作 参考来源: Github。Sodium...</div></div></div></a><a class="pagination-related" href="/2026/06/27/%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9AForge%E3%80%81Fabric%E3%80%81Optifine/" title="全解析：Forge、Fabric、Optifine"><img class="cover" src="https://cdn1.vvoch.chat/blog/JAVA/forgeLOGO1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">全解析：Forge、Fabric、Optifine</div></div><div class="info-2"><div class="info-item-1">前情提要本文章将全面解析Forge、Fabric、Optifine三者分别是做什么的，以及这三者之间的关系。 ForgeForge是Minecraft最老的Mod加载平台，相当于一辆蒸汽火车，虽然启动慢、臃肿，但胜在出现的早，受众广。许多经典MOD及整合包都是基于Forge开发的。（例如工业时代（IndustrialCraft） 神秘时代（Thaumcraft） 暮色森林（Twilight Forest） 龙之研究（Draconic Evolution） Mekanism 热力系列（Thermal Expansion）） FabricFabric是Minecraft后来新出的一代Mod加载平台，相当于一辆高铁，启动快、轻量化是他的优点。但由于出现较晚，许多经典Mod及整合包都没有对Fabric的适配。  ⚠️注意！Fabric与Forge天生互斥。意思就是说你装了Fabric就不能装Forge；装了Forge就不能装Fabric。  Optifine(后文我就叫Optf了)Optifine是一款和Forge一个年代的老古董优化插件。由于许多早期整合包喜欢将Optf和Forge放到...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/06/27/%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9AForge%E3%80%81Fabric%E3%80%81Optifine/" title="全解析：Forge、Fabric、Optifine"><img class="cover" src="https://cdn1.vvoch.chat/blog/JAVA/forgeLOGO1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-27 00:26</div><div class="info-item-2">全解析：Forge、Fabric、Optifine</div></div><div class="info-2"><div class="info-item-1">前情提要本文章将全面解析Forge、Fabric、Optifine三者分别是做什么的，以及这三者之间的关系。 ForgeForge是Minecraft最老的Mod加载平台，相当于一辆蒸汽火车，虽然启动慢、臃肿，但胜在出现的早，受众广。许多经典MOD及整合包都是基于Forge开发的。（例如工业时代（IndustrialCraft） 神秘时代（Thaumcraft） 暮色森林（Twilight Forest） 龙之研究（Draconic Evolution） Mekanism 热力系列（Thermal Expansion）） FabricFabric是Minecraft后来新出的一代Mod加载平台，相当于一辆高铁，启动快、轻量化是他的优点。但由于出现较晚，许多经典Mod及整合包都没有对Fabric的适配。  ⚠️注意！Fabric与Forge天生互斥。意思就是说你装了Fabric就不能装Forge；装了Forge就不能装Fabric。  Optifine(后文我就叫Optf了)Optifine是一款和Forge一个年代的老古董优化插件。由于许多早期整合包喜欢将Optf和Forge放到...</div></div></div></a><a class="pagination-related" href="/2026/06/27/Iris-Fabric%E4%B8%8B%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%85%89%E5%BD%B1%E5%8A%A0%E8%BD%BD%E6%96%B9%E6%A1%88/" title="Iris:Fabric下的现代光影加载方案"><img class="cover" src="https://cdn1.vvoch.chat/blog/JAVA/IrisLOGO.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-27 01:36</div><div class="info-item-2">Iris:Fabric下的现代光影加载方案</div></div><div class="info-2"><div class="info-item-1">作者声明：本文章部分使用AI查询资料 Iris Shaders：Fabric 环境下的现代光影加载方案一、Iris Shaders 是什么？Iris Shaders 是一个现代、开源的光影模组，专门为 Minecraft Java Edition 的 Fabric 模组环境设计 参考来源: Github。它的核心目标是：让 Fabric 玩家能够使用现有的 OptiFine 格式光影包，同时获得比传统方案更高的帧率和更好的模组兼容性。 在 Iris 出现之前，Fabric 玩家若想使用光影，通常需要安装 OptiFabric（一个让 OptiFine 在 Fabric 上运行的“转接器”），这种方式稳定性差、兼容性问题频发 参考来源: Github。Iris 彻底解决了这个问题，成为 Fabric 下 OptiFabric + OptiFine 光影方案的有效替代品。 Iris 完全开源。参考来源: Github，与 OptiFine 的闭源性质形成鲜明对比。 二、Iris 与 Sodium（钠）的关系Iris 依赖 Sodium 才能工作 参考来源: Github。Sodium...</div></div></div></a><a class="pagination-related" href="/2026/06/25/Minecraft%20Java%E7%89%88%EF%BC%88Windows%EF%BC%89%E4%B8%8B%E8%BD%BD%E3%80%81Mod%E5%AE%89%E8%A3%85%E4%B8%8E%E8%81%94%E6%9C%BA%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" title="Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程"><img class="cover" src="https://cdn1.vvoch.chat/blog/JAVA/PCLlogo.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-25 21:35</div><div class="info-item-2">Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程</div></div><div class="info-2"><div class="info-item-1">前情提要本文旨在帮助Minecraft新手下载并游玩Minecraft Java，若内容出现错误，欢迎指出。6383412@qq.com!!! 请注意，以下所有教程皆以Windows为系统环境。 本文讲解内容一览： 前置准备（重要）下载java（以jdk17为演示）在Minecraft Java版里，顾名思义，Java环境是必要的。 首先，这是一张Minecraft Java版与Java版本对应关系表    Minecraft版本 推荐Java版本 说明    1.0 ～ 1.5.2 Java 6 &#x2F; 7 超老版本（基本不用了）   1.6 ～ 1.8.9 Java 8 经典老版本 &#x2F; 很多老模组   1.9 ～ 1.12.2 Java 8 最经典模组生态（Forge老整合包）   1.13 ～ 1.16.5 Java 8 &#x2F; 11 过渡时期版本   1.17 ～ 1.20.4 Java 17 现代主流模组版本   1.20.5 ～ 1.21+ Java 21 最新版本   如果你是从后面来这里的，点击此链接即可快速返回。 现以JAVA17作为教程演...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn1.vvoch.chat/blog/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Vvoch</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/001yyds"><i class="fab fa-github"></i><span>GitHub</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">私は中学生です。私のブログへようこそ！<a href = "/about/">私についてもっと</a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MC%E2%80%9C%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8%E2%80%9D%E6%A8%A1%E7%BB%84%EF%BC%9AFabric-%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="toc-text">MC“元素周期表”模组：Fabric 环境下的性能优化方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8%E2%80%9D%E6%A8%A1%E7%BB%84%EF%BC%9F"><span class="toc-text">一、什么是“元素周期表”模组？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B8%E5%BF%83%E6%88%90%E5%91%98%EF%BC%9ASodium%EF%BC%88%E9%92%A0%EF%BC%89"><span class="toc-text">二、核心成员：Sodium（钠）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8"><span class="toc-text">核心作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7"><span class="toc-text">关键特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%89%8D%E6%8F%90"><span class="toc-text">使用前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="toc-text">版本说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%BE%85%E5%8A%A9%E6%88%90%E5%91%98%EF%BC%9ALithium%EF%BC%88%E9%94%82%EF%BC%89"><span class="toc-text">三、辅助成员：Lithium（锂）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8-1"><span class="toc-text">核心作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-text">使用说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%BE%85%E5%8A%A9%E6%88%90%E5%91%98%EF%BC%9APhosphor%EF%BC%88%E7%A3%B7%EF%BC%89"><span class="toc-text">四、辅助成员：Phosphor（磷）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8-2"><span class="toc-text">核心作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E"><span class="toc-text">重要状态说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8%E5%AE%8C%E6%95%B4%E7%BB%84%E5%90%88%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97"><span class="toc-text">五、元素周期表完整组合安装指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E7%8E%AF%E5%A2%83"><span class="toc-text">适用环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E7%BB%84%E5%90%88%EF%BC%88%E6%8C%89%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%89"><span class="toc-text">推荐组合（按优先级）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-text">六、总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/06/27/Iris-Fabric%E4%B8%8B%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%85%89%E5%BD%B1%E5%8A%A0%E8%BD%BD%E6%96%B9%E6%A1%88/" title="Iris:Fabric下的现代光影加载方案"><img src="https://cdn1.vvoch.chat/blog/JAVA/IrisLOGO.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Iris:Fabric下的现代光影加载方案"/></a><div class="content"><a class="title" href="/2026/06/27/Iris-Fabric%E4%B8%8B%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%85%89%E5%BD%B1%E5%8A%A0%E8%BD%BD%E6%96%B9%E6%A1%88/" title="Iris:Fabric下的现代光影加载方案">Iris:Fabric下的现代光影加载方案</a><time datetime="2026-06-26T17:36:57.000Z" title="发表于 2026-06-27 01:36 01:36:57">2026-06-27 01:36</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/" title="元素周期表ForMinecraft"><img src="https://cdn1.vvoch.chat/blog/JAVA/%E9%92%A0LOGO.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="元素周期表ForMinecraft"/></a><div class="content"><a class="title" href="/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/" title="元素周期表ForMinecraft">元素周期表ForMinecraft</a><time datetime="2026-06-26T17:13:48.000Z" title="发表于 2026-06-27 01:13 01:13:48">2026-06-27 01:13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/27/%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9AForge%E3%80%81Fabric%E3%80%81Optifine/" title="全解析：Forge、Fabric、Optifine"><img src="https://cdn1.vvoch.chat/blog/JAVA/forgeLOGO1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="全解析：Forge、Fabric、Optifine"/></a><div class="content"><a class="title" href="/2026/06/27/%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9AForge%E3%80%81Fabric%E3%80%81Optifine/" title="全解析：Forge、Fabric、Optifine">全解析：Forge、Fabric、Optifine</a><time datetime="2026-06-26T16:26:11.000Z" title="发表于 2026-06-27 00:26 00:26:11">2026-06-27 00:26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/25/%E7%B3%96%E5%88%86%E6%98%AF%E6%9C%80%E5%B0%8F%E7%9A%84%E9%81%BF%E9%9A%BE%E6%89%80/" title="今晚第一杯"><img src="https://cdn1.vvoch.chat/blog/VvochLOGO.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="今晚第一杯"/></a><div class="content"><a class="title" href="/2026/06/25/%E7%B3%96%E5%88%86%E6%98%AF%E6%9C%80%E5%B0%8F%E7%9A%84%E9%81%BF%E9%9A%BE%E6%89%80/" title="今晚第一杯">今晚第一杯</a><time datetime="2026-06-25T15:25:51.000Z" title="发表于 2026-06-25 23:25 23:25:51">2026-06-25 23:25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/25/Minecraft%20Java%E7%89%88%EF%BC%88Windows%EF%BC%89%E4%B8%8B%E8%BD%BD%E3%80%81Mod%E5%AE%89%E8%A3%85%E4%B8%8E%E8%81%94%E6%9C%BA%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" title="Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程"><img src="https://cdn1.vvoch.chat/blog/JAVA/PCLlogo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程"/></a><div class="content"><a class="title" href="/2026/06/25/Minecraft%20Java%E7%89%88%EF%BC%88Windows%EF%BC%89%E4%B8%8B%E8%BD%BD%E3%80%81Mod%E5%AE%89%E8%A3%85%E4%B8%8E%E8%81%94%E6%9C%BA%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" title="Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程">Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程</a><time datetime="2026-06-25T13:35:02.000Z" title="发表于 2026-06-25 21:35 21:35:02">2026-06-25 21:35</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Vvoch</span></div><div class="footer_custom_text"><a href="https://icp.gov.moe/?keyword=20266670" target="_blank"><img class="icp-icon" src="https://icp.gov.moe/favicon.ico"><span>萌ICP备20266670号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script>document.addEventListener('mousedown',function(e){try{var t=new Touch({identifier:Date.now(),target:e.target,clientX:e.clientX,clientY:e.clientY,screenX:e.screenX,screenY:e.screenY,pageX:e.pageX,pageY:e.pageY});document.dispatchEvent(new TouchEvent('touchstart',{touches:[t],changedTouches:[t],bubbles:!0,cancelable:!0}))}catch(e){}})</script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
