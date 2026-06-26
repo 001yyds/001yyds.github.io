@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Iris:Fabric下的现代光影加载方案</title>
+      <link href="/2026/06/27/Iris-Fabric%E4%B8%8B%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%85%89%E5%BD%B1%E5%8A%A0%E8%BD%BD%E6%96%B9%E6%A1%88/"/>
+      <url>/2026/06/27/Iris-Fabric%E4%B8%8B%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%85%89%E5%BD%B1%E5%8A%A0%E8%BD%BD%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<p>作者声明：本文章部分使用AI查询资料</p><h1 id="Iris-Shaders：Fabric-环境下的现代光影加载方案"><a href="#Iris-Shaders：Fabric-环境下的现代光影加载方案" class="headerlink" title="Iris Shaders：Fabric 环境下的现代光影加载方案"></a>Iris Shaders：Fabric 环境下的现代光影加载方案</h1><h2 id="一、Iris-Shaders-是什么？"><a href="#一、Iris-Shaders-是什么？" class="headerlink" title="一、Iris Shaders 是什么？"></a>一、Iris Shaders 是什么？</h2><p>Iris Shaders 是一个<strong>现代、开源的光影模组</strong>，专门为 Minecraft Java Edition 的 Fabric 模组环境设计 <a href="https://irisshaders.dev/">参考来源: Github</a>。它的核心目标是：<strong>让 Fabric 玩家能够使用现有的 OptiFine 格式光影包</strong>，同时获得比传统方案更高的帧率和更好的模组兼容性。</p><p>在 Iris 出现之前，Fabric 玩家若想使用光影，通常需要安装 <code>OptiFabric</code>（一个让 OptiFine 在 Fabric 上运行的“转接器”），这种方式稳定性差、兼容性问题频发 <a href="https://github.com/optifabric/OptiFabric">参考来源: Github</a>。Iris 彻底解决了这个问题，成为 Fabric 下 OptiFabric + OptiFine 光影方案的有效替代品。</p><p>Iris 完全开源。<a href="https://github.com/IrisShaders/Iris/blob/trunk/LICENSE">参考来源: Github</a>，与 OptiFine 的闭源性质形成鲜明对比。</p><h2 id="二、Iris-与-Sodium（钠）的关系"><a href="#二、Iris-与-Sodium（钠）的关系" class="headerlink" title="二、Iris 与 Sodium（钠）的关系"></a>二、Iris 与 Sodium（钠）的关系</h2><p><strong>Iris 依赖 Sodium 才能工作</strong> <a href="https://irisshaders.dev/docs/sodium">参考来源: Github</a>。Sodium 是 Iris 的<strong>强制依赖项</strong>，官方提供的 Iris 安装包<strong>已经内置了兼容版本的 Sodium</strong>，无需自行额外下载 <a href="https://modrinth.com/mod/iris">参考来源: Modrinth</a>。</p><p>两者分工明确：</p><ul><li><strong>Sodium</strong>：负责渲染引擎的性能优化，重写原版渲染管线以大幅提升帧率。</li><li><strong>Iris</strong>：在 Sodium 优化后的渲染引擎之上，加载和执行光影包。</li></ul><blockquote><p><strong>注意</strong>：如果从 Modrinth 或 CurseForge 下载的 Iris 已包含修改版 Sodium，请勿再单独安装 Sodium，否则会导致游戏无法启动。</p></blockquote><h2 id="三、Iris-的核心优势"><a href="#三、Iris-的核心优势" class="headerlink" title="三、Iris 的核心优势"></a>三、Iris 的核心优势</h2><h3 id="1-与-OptiFine-光影包无缝兼容"><a href="#1-与-OptiFine-光影包无缝兼容" class="headerlink" title="1. 与 OptiFine 光影包无缝兼容"></a>1. 与 OptiFine 光影包无缝兼容</h3><p>所有现有的 ShadersMod &#x2F; OptiFine 光影包应能直接应用于 Iris，无需任何修改 <a href="https://irisshaders.dev/docs/shaderpacks#compatibility">参考来源: Github</a>。从 OptiFine 到 Iris 的过渡在光影加载层面是无缝的。</p><h3 id="2-性能更优"><a href="#2-性能更优" class="headerlink" title="2. 性能更优"></a>2. 性能更优</h3><p>Iris 与 Sodium 搭配时，能更充分地利用显卡性能 <a href="https://irisshaders.dev/docs/performance">参考来源: Github</a>。在多项性能指标上，Iris 相较于 OptiFine 表现出更低的 CPU 开销和更高的 GPU 利用率。</p><h3 id="3-模组兼容性优先"><a href="#3-模组兼容性优先" class="headerlink" title="3. 模组兼容性优先"></a>3. 模组兼容性优先</h3><p>Iris 将<strong>与其他模组兼容</strong>作为开发的第一要务 <a href="https://irisshaders.dev/docs/compatibility#mod-compatibility">参考来源: Github</a>。大多数模组都能与 Iris 正常工作，而 OptiFine 在模组较多的环境中极易引发渲染冲突。</p><h3 id="4-支持更先进的光影特性"><a href="#4-支持更先进的光影特性" class="headerlink" title="4. 支持更先进的光影特性"></a>4. 支持更先进的光影特性</h3><p>Iris 支持部分 OptiFine 不支持的高级光影特性，例如<strong>彩色光照（LPV - Light Propagation Volume）系统</strong> <a href="https://github.com/IrisShaders/Iris/wiki/Shader-Pack-Developer-Guide#lpv">参考来源: Github</a>。</p><h2 id="四、版本与加载器支持"><a href="#四、版本与加载器支持" class="headerlink" title="四、版本与加载器支持"></a>四、版本与加载器支持</h2><h3 id="支持的游戏版本"><a href="#支持的游戏版本" class="headerlink" title="支持的游戏版本"></a>支持的游戏版本</h3><p>Iris 支持 <strong>1.16.5 及以上所有版本</strong> <a href="https://modrinth.com/mod/iris/versions">参考来源: Modrinth</a>。</p><h3 id="支持的模组加载器"><a href="#支持的模组加载器" class="headerlink" title="支持的模组加载器"></a>支持的模组加载器</h3><ul><li><strong>Fabric</strong>：1.16.5 及以上</li><li><strong>NeoForge</strong>：1.21.1 及以上</li><li><strong>Forge</strong>：<strong>官方不支持</strong> <a href="https://github.com/IrisShaders/Iris/discussions/1014">参考来源: Github</a></li></ul><blockquote><p>Forge 玩家可尝试使用第三方移植的 <strong>Oculus</strong> <a href="https://modrinth.com/mod/oculus">参考来源: Modrinth</a>，但不要向 Iris 官方提交 Oculus 的问题报告。</p></blockquote><h2 id="五、安装与使用"><a href="#五、安装与使用" class="headerlink" title="五、安装与使用"></a>五、安装与使用</h2><h3 id="方法一：使用官方安装器（推荐）"><a href="#方法一：使用官方安装器（推荐）" class="headerlink" title="方法一：使用官方安装器（推荐）"></a>方法一：使用官方安装器（推荐）</h3><ol><li>访问 Iris 官网（irisshaders.dev），下载 Universal JAR（Iris 安装器） <a href="https://irisshaders.dev/download">参考来源: Github</a></li><li>运行安装器，选择你的 Minecraft 版本</li><li>安装器会自动配置 Fabric 并内置 Sodium</li><li>启动游戏，选择新生成的 Fabric 配置文件</li></ol><h3 id="方法二：手动安装"><a href="#方法二：手动安装" class="headerlink" title="方法二：手动安装"></a>方法二：手动安装</h3><ol><li>安装对应版本的 <strong>Fabric Loader</strong></li><li>从 Modrinth 或 CurseForge 下载对应版本的 <strong>Iris</strong> JAR 文件 <a href="https://modrinth.com/mod/iris/versions">参考来源: Modrinth</a></li><li>将 JAR 文件放入 Minecraft 的 <code>mods</code> 文件夹</li><li>启动游戏，选择 Fabric 配置文件</li></ol><h3 id="启用光影"><a href="#启用光影" class="headerlink" title="启用光影"></a>启用光影</h3><ol><li>进入游戏后按 <code>ESC</code> → “选项” → “视频设置” → “Shader Packs” <a href="https://irisshaders.dev/docs/using-shaderpacks">参考来源: Github</a></li><li>将下载的光影包（.zip 文件）拖入或放入弹出的文件夹中</li><li>选择光影包，点击“应用”即可启用</li></ol><blockquote><p>你也可以在游戏中直接按 <strong>“O”键</strong> 快速打开光影包选择菜单。</p></blockquote><h2 id="六、兼容性注意事项"><a href="#六、兼容性注意事项" class="headerlink" title="六、兼容性注意事项"></a>六、兼容性注意事项</h2><h3 id="不兼容的模组"><a href="#不兼容的模组" class="headerlink" title="不兼容的模组"></a>不兼容的模组</h3><ul><li><strong>OptiFine</strong>：与 Iris 不兼容，不可同时安装 <a href="https://irisshaders.dev/docs/compatibility#optifine">参考来源: Github</a></li><li><strong>Canvas Renderer</strong>：不兼容</li><li><strong>任何 Vulkan 渲染模组</strong>：不兼容</li></ul><h3 id="需要额外注意的模组"><a href="#需要额外注意的模组" class="headerlink" title="需要额外注意的模组"></a>需要额外注意的模组</h3><ul><li><strong>Indium</strong>：如果你使用 Fabric 且版本低于 1.21.1，<strong>需要安装 Indium</strong>，它提供了 Sodium 本身不具备的、许多模组所需的 API <a href="https://github.com/CaffeineMC/sodium-fabric/wiki/Indium-Compatibility">参考来源: Github</a>。1.21.1 及以上版本则不需要。</li><li><strong>Nvidium</strong>：可与 Iris 共存，启用光影时会自动禁用自身。</li><li><strong>Distant Horizons &#x2F; Voxy</strong>：与部分光影包兼容，需要光影包主动提供支持。</li></ul><h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><table><thead><tr><th>特性</th><th>Iris + Sodium</th><th>OptiFine（通过 OptiFabric）</th></tr></thead><tbody><tr><td>开源</td><td>是（GNU LGPL v3.0）</td><td>否</td></tr><tr><td>性能</td><td>更优，CPU&#x2F;GPU 利用率更高</td><td>一般</td></tr><tr><td>模组兼容性</td><td>优秀，专为模组环境设计</td><td>差，易引发渲染冲突</td></tr><tr><td>光影兼容</td><td>支持绝大多数 OptiFine 格式光影包</td><td>原生支持</td></tr><tr><td>支持 Forge</td><td>否</td><td>是</td></tr></tbody></table><p>Iris Shaders 是目前 Fabric 环境下<strong>性能最优、兼容性最好、完全开源</strong>的光影加载方案 <a href="https://irisshaders.dev/">参考来源: Github</a>。如果你在使用 Fabric 或 NeoForge 并希望获得光影体验，Iris 是比 OptiFine 更现代、更可靠的选择 <a href="https://modrinth.com/mod/iris">参考来源: Modrinth</a>。</p><p>快速返回<code>Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程</code>链接：–&gt;<a href="/2026/06/25/Minecraft%20Java版（Windows）下载、Mod安装与联机保姆级教程/#2-1、游戏各版本区别">点我</a>&lt;–</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> MC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>元素周期表ForMinecraft</title>
+      <link href="/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/"/>
+      <url>/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/</url>
+      
+        <content type="html"><![CDATA[<p>作者声明：本文章部分使用AI查询资料</p><h1 id="MC“元素周期表”模组：Fabric-环境下的性能优化方案"><a href="#MC“元素周期表”模组：Fabric-环境下的性能优化方案" class="headerlink" title="MC“元素周期表”模组：Fabric 环境下的性能优化方案"></a>MC“元素周期表”模组：Fabric 环境下的性能优化方案</h1><h2 id="一、什么是“元素周期表”模组？"><a href="#一、什么是“元素周期表”模组？" class="headerlink" title="一、什么是“元素周期表”模组？"></a>一、什么是“元素周期表”模组？</h2><p>“元素周期表”是 Minecraft 社区对一系列以化学元素命名的优化模组的统称 <a href="https://www.mcmod.cn/class/5749.html">参考来源: Mcmod</a>。</p><p>这个称呼的由来很简单：<strong>Sodium（钠）</strong> 是第一个打出名气的优化模组，对游戏性能的提升非常显著，帧数表现极其稳定，因此知名度极高 <a href="https://modrinth.com/mod/sodium">参考来源: Modrinth</a>。随后越来越多的优化模组效仿 Sodium 的命名方式，纷纷以元素周期表中的元素命名，社区便形象地将它们统称为“元素周期表” <a href="https://github.com/CaffeineMC/sodium-fabric">参考来源: Github</a>。</p><blockquote><p><strong>注意</strong>：“元素周期表”并非一个整合包或单一模组，而是一个<strong>模组集合的统称</strong>。你需要根据需求分别下载对应的模组文件。</p></blockquote><h2 id="二、核心成员：Sodium（钠）"><a href="#二、核心成员：Sodium（钠）" class="headerlink" title="二、核心成员：Sodium（钠）"></a>二、核心成员：Sodium（钠）</h2><p><strong>定位</strong>：渲染引擎优化模组</p><p>Sodium 是一个适用于 <strong>Minecraft 1.16+</strong> 客户端的免费、强大的渲染引擎优化模组 <a href="https://modrinth.com/mod/sodium/versions">参考来源: Modrinth</a>。它在修复一些图形问题的同时，<strong>大幅提高了渲染性能</strong> <a href="https://github.com/CaffeineMC/sodium-fabric/wiki/FAQ">参考来源: Github</a>。</p><h3 id="核心作用"><a href="#核心作用" class="headerlink" title="核心作用"></a>核心作用</h3><p>Sodium 完全重写了游戏的原版渲染引擎，使其速度更快、效率更高 <a href="https://caffeinemc.net/sodium">参考来源: Github</a>。根据官方数据，<strong>FPS 通常可提高 300% 或更多</strong> <a href="https://github.com/CaffeineMC/sodium-fabric#sodium">参考来源: Github</a>。同时它还能减少微卡顿（micro-stutter），让游戏运行更加丝滑。</p><h3 id="关键特性"><a href="#关键特性" class="headerlink" title="关键特性"></a>关键特性</h3><ul><li><strong>不改变原版画面</strong>：Sodium 的优化不会影响游戏的视觉效果，让你体验到原汁原味的方块游戏。</li><li><strong>广泛的模组兼容性</strong>：与 Fabric 模组生态系统具有广泛的兼容性。</li><li><strong>即装即用</strong>：默认情况下，Sodium 会启用系统支持的所有优化，一般不需要手动配置。</li></ul><h3 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h3><p>Sodium 是一个 <strong>Fabric 模组</strong>，需要 <strong>Fabric Loader</strong> 作为前置 <a href="https://fabricmc.net/use/installer/">参考来源: Github</a>。安装 Fabric Loader 后，将 Sodium 的 JAR 文件放入 <code>mods</code> 文件夹即可。</p><blockquote><p><strong>兼容性警告</strong>：Sodium <strong>与 OptiFine（高清修复）不兼容</strong> <a href="https://github.com/CaffeineMC/sodium-fabric/wiki/FAQ#can-i-use-sodium-with-optifine">参考来源: Github</a>。如果你之前在使用 OptiFine，需要先将其移除。</p></blockquote><h3 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h3><ul><li>Sodium 0.9.x 已支持 Minecraft 26.2，并包含对 Vulkan 的早期支持 <a href="https://modrinth.com/mod/sodium/versions">参考来源: Modrinth</a>。</li><li>Sodium 0.6.0 及以上版本<strong>不需要</strong>也不兼容 <code>Indium（铟）</code> 这个兼容性模组 <a href="https://github.com/CaffeineMC/sodium-fabric/wiki/Indium-Compatibility">参考来源: Github</a>。</li></ul><h2 id="三、辅助成员：Lithium（锂）"><a href="#三、辅助成员：Lithium（锂）" class="headerlink" title="三、辅助成员：Lithium（锂）"></a>三、辅助成员：Lithium（锂）</h2><p><strong>定位</strong>：游戏逻辑运算优化模组</p><p>Lithium 是一个自由及开源的优化模组，与 Sodium 专注于渲染不同，Lithium 致力于<strong>优化游戏的各种逻辑系统</strong> <a href="https://modrinth.com/mod/lithium">参考来源: Modrinth</a>。</p><h3 id="核心作用-1"><a href="#核心作用-1" class="headerlink" title="核心作用"></a>核心作用</h3><p>Lithium 在不修改原版机制的前提下，改善多种原版机制的计算方法 <a href="https://github.com/CaffeineMC/lithium-fabric">参考来源: Github</a>，包括：</p><ul><li><strong>物理系统优化</strong>：减少碰撞箱的分辨率复杂度，优化实体碰撞检测。</li><li><strong>生物 AI 优化</strong>：使用基于事件的系统减少 CPU 占用，生物在不同 AI 任务间的切换更快。</li><li><strong>世界生成优化</strong>：移除不必要的计算，显著降低生成新区块时的性能开销。</li><li><strong>区块加载优化</strong>：玩家探索世界时 TPS 下降更少，加载时间缩短。</li><li><strong>刷怪塔优化</strong>：优化实体碰撞处理，显著降低刷怪塔对服务器 TPS 的影响。</li></ul><h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>Lithium 分为 <strong>Fabric 和 NeoForge 两个版本</strong> <a href="https://modrinth.com/mod/lithium/versions">参考来源: Modrinth</a>。可单独安装至客户端或服务器任意一端——服务端安装时客户端无需安装，反之亦然。</p><blockquote><p><strong>注意</strong>：Lithium <strong>不再更新 Forge 版本</strong>，现仅支持 Fabric 和 NeoForge <a href="https://github.com/CaffeineMC/lithium-fabric/issues/769">参考来源: Github</a>。</p></blockquote><p>Sodium 官方文档明确指出：<strong>建议同时安装 Lithium 来优化游戏的其他部分</strong> <a href="https://github.com/CaffeineMC/sodium-fabric/wiki/FAQ#what-other-mods-do-you-recommend">参考来源: Github</a>。</p><h2 id="四、辅助成员：Phosphor（磷）"><a href="#四、辅助成员：Phosphor（磷）" class="headerlink" title="四、辅助成员：Phosphor（磷）"></a>四、辅助成员：Phosphor（磷）</h2><p><strong>定位</strong>：光照引擎优化模组</p><p>Phosphor 是一个致力于优化 Minecraft 中<strong>优化最差的部分——光照引擎</strong>的模组 <a href="https://modrinth.com/mod/phosphor">参考来源: Modrinth</a>。</p><h3 id="核心作用-2"><a href="#核心作用-2" class="headerlink" title="核心作用"></a>核心作用</h3><ul><li><strong>大幅降低区块生成时间</strong>：使用 Phosphor 后，在某些维度下游戏生成区块所用时间<strong>可减半</strong>，生成整个世界的时间也将大幅降低 <a href="https://github.com/CaffeineMC/phosphor-fabric#phosphor">参考来源: Github</a>。</li><li><strong>修复光照错误</strong>：修复了一些长期存在的光照引擎 bug。</li><li><strong>服务端&#x2F;客户端通用</strong>：支持客户端和服务器，服务端安装时客户端无需安装。</li><li><strong>不改变原版特性</strong>：Phosphor 不会改变原版游戏的特性，且支持绝大多数地形模组。</li></ul><h3 id="重要状态说明"><a href="#重要状态说明" class="headerlink" title="重要状态说明"></a>重要状态说明</h3><p><strong>Phosphor 已停止维护</strong> <a href="https://github.com/CaffeineMC/phosphor-fabric/issues/168">参考来源: Github</a>。自 Minecraft 1.20 版本以来，游戏的光照引擎已经有了显著改进，Phosphor 的大部分补丁已不再适用或有用 <a href="https://github.com/CaffeineMC/phosphor-fabric#status">参考来源: Github</a>。</p><ul><li>如果你使用 <strong>1.20 及以上版本</strong>：<strong>不需要</strong>安装 Phosphor <a href="https://modrinth.com/mod/phosphor">参考来源: Modrinth</a>。</li><li>如果你使用 <strong>1.20 以下版本</strong>：Phosphor 仍然有效，可以继续使用。</li></ul><blockquote><p><strong>兼容性</strong>：Phosphor <strong>不兼容 Starlight（星光）</strong> ，因为二者都重写了光照引擎。请二选一 <a href="https://github.com/CaffeineMC/phosphor-fabric#starlight-compatibility">参考来源: Github</a>。</p></blockquote><h2 id="五、元素周期表完整组合安装指南"><a href="#五、元素周期表完整组合安装指南" class="headerlink" title="五、元素周期表完整组合安装指南"></a>五、元素周期表完整组合安装指南</h2><h3 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h3><ul><li><strong>Minecraft 版本</strong>：1.16.5 或更高版本 <a href="https://fabricmc.net/wiki/versions">参考来源: Github</a></li><li><strong>模组加载器</strong>：Fabric 或 NeoForge</li><li><strong>Java 运行环境</strong>：建议 Java 17 或更高版本</li></ul><h3 id="推荐组合（按优先级）"><a href="#推荐组合（按优先级）" class="headerlink" title="推荐组合（按优先级）"></a>推荐组合（按优先级）</h3><table><thead><tr><th>模组</th><th>必要性</th><th>说明</th></tr></thead><tbody><tr><td><strong>Fabric Loader</strong></td><td>必装</td><td>模组加载器基础 <a href="https://fabricmc.net/use/installer/">参考来源: Github</a></td></tr><tr><td><strong>Sodium（钠）</strong></td><td>必装</td><td>渲染优化核心 <a href="https://modrinth.com/mod/sodium">参考来源: Modrinth</a></td></tr><tr><td><strong>Lithium（锂）</strong></td><td>推荐</td><td>逻辑运算优化 <a href="https://modrinth.com/mod/lithium">参考来源: Modrinth</a></td></tr><tr><td><strong>Phosphor（磷）</strong></td><td>1.20以下推荐</td><td>光照优化（1.20+ 不需要） <a href="https://modrinth.com/mod/phosphor">参考来源: Modrinth</a></td></tr><tr><td><strong>Fabric API</strong></td><td>推荐</td><td>许多模组的前置 <a href="https://modrinth.com/mod/fabric-api">参考来源: Modrinth</a></td></tr></tbody></table><h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><table><thead><tr><th>方案</th><th>适用场景</th><th>推荐组合</th></tr></thead><tbody><tr><td><strong>纯性能优化（Fabric）</strong></td><td>不玩光影，只求流畅</td><td>Sodium + Lithium +（1.20以下加 Phosphor） <a href="https://modrinth.com/mod/sodium">参考来源: Modrinth</a></td></tr><tr><td><strong>纯性能优化（Forge）</strong></td><td>Forge 环境下的替代</td><td>Embeddium + Canary（或 Starlight） <a href="https://modrinth.com/mod/embeddium">参考来源: Modrinth</a></td></tr></tbody></table><p>这套“元素周期表”组合，是目前 Fabric 环境下<strong>性能最优、兼容性最好、完全开源</strong>的优化方案，能显著提升游戏帧率并减少卡顿，值得每一位注重流畅度的玩家尝试。</p><p>快速返回<code>Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程</code>链接：–&gt;<a href="/2026/06/25/Minecraft%20Java版（Windows）下载、Mod安装与联机保姆级教程/#2-1、游戏各版本区别">点我</a>&lt;–</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> MC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>全解析：Forge、Fabric、Optifine</title>
+      <link href="/2026/06/27/%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9AForge%E3%80%81Fabric%E3%80%81Optifine/"/>
+      <url>/2026/06/27/%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9AForge%E3%80%81Fabric%E3%80%81Optifine/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h1><p>本文章将全面解析Forge、Fabric、Optifine三者分别是做什么的，以及这三者之间的关系。</p><h1 id="Forge"><a href="#Forge" class="headerlink" title="Forge"></a>Forge</h1><p><code>Forge</code>是<code>Minecraft</code>最老的Mod加载平台，相当于一辆<code>蒸汽火车</code>，虽然启动慢、臃肿，但胜在出现的早，受众广。许多经典MOD及整合包都是基于<code>Forge</code>开发的。<br>（例如<code>工业时代（IndustrialCraft）</code> <code>神秘时代（Thaumcraft）</code> <code>暮色森林（Twilight Forest）</code> <code>龙之研究（Draconic Evolution）</code> <code>Mekanism</code> <code>热力系列（Thermal Expansion）</code>）</p><h1 id="Fabric"><a href="#Fabric" class="headerlink" title="Fabric"></a>Fabric</h1><p><code>Fabric</code>是<code>Minecraft</code>后来新出的一代Mod加载平台，相当于一辆<code>高铁</code>，启动快、轻量化是他的优点。但由于出现较晚，许多经典Mod及整合包都没有对Fabric的适配。</p><blockquote><p>⚠️注意！<code>Fabric</code>与<code>Forge</code>天生互斥。意思就是说你装了<code>Fabric</code>就不能装<code>Forge</code>；装了<code>Forge</code>就不能装<code>Fabric</code>。</p></blockquote><h1 id="Optifine-后文我就叫Optf了"><a href="#Optifine-后文我就叫Optf了" class="headerlink" title="Optifine(后文我就叫Optf了)"></a>Optifine(后文我就叫Optf了)</h1><p><code>Optifine</code>是一款和<code>Forge</code>一个年代的老古董优化插件。由于许多早期整合包喜欢将<code>Optf</code>和<code>Forge</code>放到一起，于是人们就自然而然认为<code>Optf</code>是和<code>Forge</code>绑定的优化Mod（光影加载器）了。然而到了现在，越来越多的优化Mod出现，导致<code>Optf</code>受众远不如之前广。</p><blockquote><p>⚠️注意！虽然<code>Fabric</code>可以通过Opti<code>Fabric</code>来安装<code>Optf</code>，但是兼容性很差，还非常不稳定。所以建议<code>Forge</code>装<code>Optifine</code>，<code>Fabric</code>装<code>元素周期表</code>+<code>Iris</code>。</p></blockquote><p>若不知道<code>元素周期表</code>：–&gt;<a href="/2026/06/27/%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8ForMinecraft/">点我</a>&lt;–<br>若不知道<code>Iris</code>：–&gt;<a href="/2026/06/27/Iris-Fabric下的现代光影加载方案/">点我</a>&lt;–</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><ul><li><code>Forge</code>和<code>Fabric</code>都是<code>Mod</code>加载器，作用是让<code>Minecraft</code>能够运行<code>Mod</code>，但两者<strong>互不兼容</strong>。下载<code>Mod</code>时，<strong>一定要看清它支持的是<code>Forge</code>、<code>Fabric</code>还是<code>NeoForge</code></strong>。</li><li><code>OptiFine</code>则是一个用于优化性能和增强画面的<code>Mod</code>，它不是<code>Mod</code>加载器，不能代替<code>Forge</code>或<code>Fabric</code>来加载其他<code>Mod</code>。</li></ul><p>快速返回<code>Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程</code>链接：–&gt;<a href="/2026/06/25/Minecraft%20Java版（Windows）下载、Mod安装与联机保姆级教程/#2-1、游戏各版本区别">点我</a>&lt;–</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> MC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>今晚第一杯</title>
+      <link href="/2026/06/25/%E7%B3%96%E5%88%86%E6%98%AF%E6%9C%80%E5%B0%8F%E7%9A%84%E9%81%BF%E9%9A%BE%E6%89%80/"/>
+      <url>/2026/06/25/%E7%B3%96%E5%88%86%E6%98%AF%E6%9C%80%E5%B0%8F%E7%9A%84%E9%81%BF%E9%9A%BE%E6%89%80/</url>
+      
+        <content type="html"><![CDATA[<p><strong>作者声明：该文章由deepseek-v4-pro生成</strong></p><h1 id="今晚喝一杯"><a href="#今晚喝一杯" class="headerlink" title="今晚喝一杯"></a>今晚喝一杯</h1><p>第一口总是最好的。</p><p>吸管穿过那层塑封膜的时候会有一声脆响，像什么东西在你面前打开了——奶茶店的灯是暖黄的，柜台后面的店员刚刚摇完雪克杯，冰块在里面哗啦啦响。你接过那杯东西，杯壁是凉的，手心是热的，吸管插进去，第一口上来——甜的，凉的，茶味淡淡的，珍珠刚好在舌尖弹了一下。</p><p>那个瞬间所有事情都暂停了。工作的消息没回完不要紧，账单月底再算不要紧，人生还可以再糟一点——现在不要紧。</p><hr><h2 id="为什么需要它"><a href="#为什么需要它" class="headerlink" title="为什么需要它"></a>为什么需要它</h2><p>我有时候觉得，成年人一直在找这种东西：<strong>短暂的、确定的、随时可以拥有的快乐</strong>。</p><p>奶茶恰好是。它不贵，不至于像买包买鞋需要下决心；它不复杂，手机上点几下二十分钟就送到；它不持久，喝完一杯快乐也就散了，但没关系，明天可以再来一杯。</p><p>这种快乐很廉价，但正因如此，它才诚实。</p><p>你喝第一口的时候不会想糖分。不会想这一杯等于多少碗米饭，不会想上个月的体检报告，不会想朋友圈里那条”戒糖一个月我发生了什么变化”。那个瞬间你是空的，空到只需要甜，甜就到了。</p><hr><h2 id="关于糖分的博弈"><a href="#关于糖分的博弈" class="headerlink" title="关于糖分的博弈"></a>关于糖分的博弈</h2><p>然后你会开始找理由。</p><p>点单的时候手在三分糖和七分糖之间悬着，最后选了五分——骗自己说这样刚刚好。实际上五分和七分区别不大，但选了五分你就能心安理得地喝完一整杯，仿佛那少掉的二分糖真的能抵消什么。</p><p>配料也是。加珍珠还是加椰果？加芋泥会不会太扎实？要不要换成燕麦，燕麦听起来健康一点。最后选了”什么都要”，备注里写”多加一份珍珠”，然后删掉，又加上。手指在屏幕上反复，像在做什么重大的道德抉择。</p><p>你明明知道这杯东西没什么营养。茶粉冲的，植脂末调的，珍珠是木薯粉搓的，所有配料里唯一接近”食物”的大概是那几片柠檬。但你还是点了，还是会等，还是会在大冬天握着那杯加冰的，手指冻得发红也舍不得松手。</p><blockquote><p>因为你需要。</p></blockquote><hr><h2 id="它解决不了什么，但它在那里"><a href="#它解决不了什么，但它在那里" class="headerlink" title="它解决不了什么，但它在那里"></a>它解决不了什么，但它在那里</h2><p>加班到十点的那天需要。和对象吵架的那天需要。什么坏事都没发生、但就是觉得没什么意思的那天也需要。奶茶不解决问题，它只是让问题暂时退远一点，退到那杯甜味后面。你咬着吸管发呆的时候，问题还是问题，但你不那么想哭了。</p><p>这大概就是它存在的意义。不是好不好喝的问题，是它在那里。满大街都是奶茶店，转角就有一家，你永远找得到，永远买得起，永远能喝到一口甜的。</p><hr><h2 id="零卡糖的谎言"><a href="#零卡糖的谎言" class="headerlink" title="零卡糖的谎言"></a>零卡糖的谎言</h2><p>有段时间我开始点零卡糖。零卡糖不好喝，甜得很假，像在喝什么东西的替代品。喝完之后既没有满足感，也没有罪恶感，只剩下一种空落落的感觉——你都花了这个钱了，连快乐都不肯给你真实的。</p><p>后来我不点了。<strong>要么全糖，要么不喝。</strong></p><p>全糖的快乐是很明确的。你知道自己在做什么，知道自己为什么要喝，喝完不会怀疑自己。那一口下去甜得扎扎实实的，糖分顺着喉咙往下走，走得理直气壮。你甚至可以在心里说一句”算了，今天对自己好一点”，然后心安理得地喝完一整杯。</p><p>虚伪吗？虚伪。但成年人的快乐多半是虚伪的，奶茶只是诚实得比较明显。</p><p>它不骗你。杯子上写着热量，配料表印在背后，你喝完舌头会记得那个甜度。不像那些打着健康旗号的替代品，给你承诺又给不了你快乐。</p><hr><h2 id="不变的那一杯"><a href="#不变的那一杯" class="headerlink" title="不变的那一杯"></a>不变的那一杯</h2><p>我常去的奶茶店老板认识我。每次去他都说：”还是老样子？”我说嗯。然后他在小票上写”少冰，七分糖，加珍珠”。其实我每次都点一样的，从来没有换过。</p><p>可能是因为换口味太费脑子了。选来选去选半天，不如直接点最熟悉的那一杯。你知道它是什么味道，你知道自己喜不喜欢，你不会失望。</p><p>奶茶给人最大的安全感大概就在这里——<strong>它是不变的</strong>。人变来变去的，工作换了好几个，城市搬了好几次，身边的人来来走走，但奶茶还是那个味道。你三年前喝的那杯和今天喝的这杯是一样的，珍珠一样弹，茶味一样淡，甜度一样让你想起”那时候”。</p><p>“那时候”也不一定是什么好时候。但至少那时候你还有力气站在柜台前面等一杯奶茶，拿到手之后傻乎乎地笑一下，觉得日子还能过得下去。</p><p>今天也是。</p><hr><h2 id="最后一口"><a href="#最后一口" class="headerlink" title="最后一口"></a>最后一口</h2><p>所以当我写下这些字的时候，手边放着一杯喝了一半的奶茶。冰化了一些，杯壁上的水珠顺着流下来，在桌面上聚成一小滩。珍珠沉在底部，吸管戳进去搅了搅，发出咕噜咕噜的声音。</p><p>我把它拿起来，喝掉了最后一口。珍珠嚼了几下，咽下去。</p><p>甜。</p><p>然后我把杯子扔进垃圾桶，打开电脑，继续回那些没回完的消息。</p><p>明天大概还会点一杯。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 转载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Minecraft Java版（Windows）下载、Mod安装与联机保姆级教程</title>
+      <link href="/2026/06/25/Minecraft%20Java%E7%89%88%EF%BC%88Windows%EF%BC%89%E4%B8%8B%E8%BD%BD%E3%80%81Mod%E5%AE%89%E8%A3%85%E4%B8%8E%E8%81%94%E6%9C%BA%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
+      <url>/2026/06/25/Minecraft%20Java%E7%89%88%EF%BC%88Windows%EF%BC%89%E4%B8%8B%E8%BD%BD%E3%80%81Mod%E5%AE%89%E8%A3%85%E4%B8%8E%E8%81%94%E6%9C%BA%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h1><p>本文旨在帮助Minecraft新手下载并游玩<code>Minecraft Java</code>，若内容出现错误，欢迎指出。<code>6383412@qq.com</code><br>!!! 请注意，以下所有教程皆以<strong>Windows</strong>为系统环境。</p><p>本文讲解内容一览：<br><img src="https://cdn1.vvoch.chat/blog/JAVA/ChatGPT%20SiweiDaotu.png" alt="思维导图"></p><h1 id="前置准备（重要）"><a href="#前置准备（重要）" class="headerlink" title="前置准备（重要）"></a>前置准备（重要）</h1><h2 id="下载java（以jdk17为演示）"><a href="#下载java（以jdk17为演示）" class="headerlink" title="下载java（以jdk17为演示）"></a>下载java（以jdk17为演示）</h2><p>在Minecraft Java版里，顾名思义，Java环境是必要的。</p><p>首先，这是一张Minecraft Java版与Java版本对应关系表</p><table><thead><tr><th>Minecraft版本</th><th>推荐Java版本</th><th>说明</th></tr></thead><tbody><tr><td>1.0 ～ 1.5.2</td><td>Java 6 &#x2F; 7</td><td>超老版本（基本不用了）</td></tr><tr><td>1.6 ～ 1.8.9</td><td>Java 8</td><td>经典老版本 &#x2F; 很多老模组</td></tr><tr><td>1.9 ～ 1.12.2</td><td>Java 8</td><td>最经典模组生态（Forge老整合包）</td></tr><tr><td>1.13 ～ 1.16.5</td><td>Java 8 &#x2F; 11</td><td>过渡时期版本</td></tr><tr><td>1.17 ～ 1.20.4</td><td>Java 17</td><td>现代主流模组版本</td></tr><tr><td>1.20.5 ～ 1.21+</td><td>Java 21</td><td>最新版本</td></tr></tbody></table><p>如果你是从后面来这里的，点击<a href="/2026/06/25/Minecraft%20Java版（Windows）下载、Mod安装与联机保姆级教程/#2-1、游戏各版本区别">此链接</a>即可快速返回。</p><p><strong>现以JAVA17作为教程演示。</strong></p><h3 id="下载JDK17安装包"><a href="#下载JDK17安装包" class="headerlink" title="下载JDK17安装包"></a><strong>下载JDK17安装包</strong></h3><blockquote><p><strong>由于国内网络环境很难直接访问到甲骨文官网</strong>，所以这里我提供了JDK8、JDK11、JDK17、JDK21的安装包。点击下列对应JAVA版本即可直接下载安装包。<br>(<a href="https://www.oracle.com/java/technologies/downloads/">Oracle官网下载链接</a>)</p></blockquote><blockquote><p><a href="https://cdn.vvoch.chat/blog/JAVA/jdk-8u341-windows-x64.exe">jdk-8u341-windows-x64.exe</a><br><a href="https://cdn.vvoch.chat/blog/JAVA/jdk-11.0.18_windows-x64_bin.exe">jdk-11.0.18_windows-x64_bin.exe</a><br><a href="https://cdn.vvoch.chat/blog/JAVA/jdk-17.0.14_windows-x64_bin.msi">jdk-17.0.14_windows-x64_bin.msi</a><br><a href="https://cdn.vvoch.chat/blog/JAVA/jdk-21_windows-x64_bin.msi">jdk-21_windows-x64_bin.msi</a></p></blockquote><p>下载后打开安装包</p><blockquote><p>选择一个安装路径（记住这个路径），并点击NEXT</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/Snipaste_2026-06-25_22-41-34.png" alt="图片"></p><blockquote><p>点击Close</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/Snipaste_2026-06-25_22-44-01.png" alt="图片"></p><p><strong>因为只是玩MC，所以不需要配置环境变量</strong><br>到这里，JAVA就算是安装好了。</p><p><strong>接下来，即是正文。</strong></p><h1 id="1、游戏启动器PCL"><a href="#1、游戏启动器PCL" class="headerlink" title="1、游戏启动器PCL"></a>1、游戏启动器PCL</h1><h2 id="如何下载PCL"><a href="#如何下载PCL" class="headerlink" title="如何下载PCL"></a>如何下载PCL</h2><blockquote><p>打开PCL创作者<code>龙腾猫跃</code>的<code>爱发电</code>主页。</p></blockquote><p>–&gt;<a href="https://ifdian.net/a/LTCat">一键直达</a>&lt;–</p><blockquote><p>点击页面左侧的链接</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/Snipaste_2026-06-25_22-56-46.png" alt="图片"></p><blockquote><p>随便点一个下载PCL本体(建议选择<code>备用下载</code>链接，因为<code>备用下载</code>链接下载不限速)</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/downloadPcl.png" alt="图片"></p><blockquote><p>将链接复制进网址栏(如图所示),然后按下Enter访问。</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4.png" alt="图片"></p><blockquote><p>在弹出方框中输入<code>pcl2</code></p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/pcl2.png" alt="图片"></p><blockquote><p>点击图中标记的链接，下载pcl2</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/dianjixiazai.png" alt="图片"></p><blockquote><p>下载好后，将<code>Plain Craft Launcher 2.exe</code>解压到<strong>空文件夹</strong>中</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/jieyapcl.png" alt="图片"></p><blockquote><p>双击打开<code>Plain Craft Launcher 2.exe</code></p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/dakai.png" alt="图片"></p><p><strong>到这里，PCL本体就下载完成了</strong></p><h2 id="登录环节"><a href="#登录环节" class="headerlink" title="登录环节"></a>登录环节</h2><h3 id="如果是离线版本登录游戏-没花钱买正版账号的玩家"><a href="#如果是离线版本登录游戏-没花钱买正版账号的玩家" class="headerlink" title="如果是离线版本登录游戏(没花钱买正版账号的玩家)"></a>如果是离线版本登录游戏(没花钱买正版账号的玩家)</h3><blockquote><p>在此界面的<code>游戏用户名</code>文字框中，填写您的游戏名称。</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/dakai.png" alt="图片"></p><blockquote><p><strong>注意！游戏名称最好只有<code>英文</code> <code>数字</code>以及<code>下划线“_”</code>，否则游戏可能会报错！！！！！</strong></p></blockquote><p>填写完名称后，即可直接跳转至<a href="/2026/06/25/Minecraft%20Java版（Windows）下载、Mod安装与联机保姆级教程/#2、如何在PCL中下载Minecraft游戏本体">此章节</a>进行下一步</p><h3 id="如果您是有正版账号的玩家"><a href="#如果您是有正版账号的玩家" class="headerlink" title="如果您是有正版账号的玩家"></a>如果您是有正版账号的玩家</h3><blockquote><p>在此界面的左上角点击<code>正版</code></p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/zhengbandenglu.png" alt="图片"></p><blockquote><p>点击<code>登录</code>按钮</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/Denglu.png" alt="image"></p><blockquote><p>在自动打开的网页中将<code>登录代码</code>复制到文字框中，点击<code>允许访问</code></p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/%E4%BB%A3%E7%A0%81.png" alt="image"></p><blockquote><p>点击<code>接受</code>按钮</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/%E6%8E%A5%E5%8F%97.png" alt="image"></p><blockquote><p>当出现玩家头像和名字时，即登录成功。</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/successLogin.png" alt="image"></p><h1 id="2、如何在PCL中下载Minecraft游戏本体"><a href="#2、如何在PCL中下载Minecraft游戏本体" class="headerlink" title="2、如何在PCL中下载Minecraft游戏本体"></a>2、如何在PCL中下载Minecraft游戏本体</h1><h2 id="2-1、游戏各版本区别"><a href="#2-1、游戏各版本区别" class="headerlink" title="2.1、游戏各版本区别"></a>2.1、游戏各版本区别</h2><p>在Minecraft中，玩家可以自行选择各个发行版进行游玩。<br>那么，在这些琳琅满目的游戏版本中，该如何选择适合自己的呢？</p><p>首先。我们来了解一下这些游戏版本的区别。<br>(其实在前面已经有一张表格描述过了。<a href="/2026/06/25/Minecraft%20Java版（Windows）下载、Mod安装与联机保姆级教程/#下载java（以jdk17为演示）">点这里</a>返回观看)</p><p><strong>虽然</strong>，<code>1.7.10</code> <code>1.12.2</code>之类的MC版本都是公认的“神中神”，<br><strong>但是</strong>，目前，由于一些不可抗力的因素，本人在这里并不推荐游玩这些低版本MC。<br>（除非你的电脑配置实在是<strong>很低很低很低</strong>，带不动高版本的情况下才选择这些低版本）<br><strong>所以</strong>，本人推荐游玩的版本有<code>1.16.5(下界更新)</code> <code>1.18.2(洞穴更新)</code>以及<code>最新版本(最新体验)</code>。<br>接下来的教程会以<code>1.18.2</code>为示例版本进行教程制作。</p><p>让我们回到PCL界面</p><blockquote><p>首先，点击上方的<code>下载</code>按钮</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/download.png" alt="image"></p><blockquote><p>往下滑动，找到<code>1.18.2</code>并点击进入</p></blockquote><p><img src="https://cdn1.vvoch.chat/blog/JAVA/1.18.2%E4%B8%8B%E8%BD%BD%E7%95%8C%E9%9D%A2.png" alt="image"></p><p>那我们就可以看到了，里面有三个选项卡。<br><code>1、Forge</code> <code>2、Fabric</code> <code>3、Optifine</code><br>如果你<strong>知道</strong>这三项是干什么的，请继续阅读。<br>如果你<strong>不知道</strong>这三项是干什么的，<strong>请移步</strong><a href="/2026/06/27/%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%9AForge%E3%80%81Fabric%E3%80%81Optifine/"><strong>此链接</strong></a>。</p><p>上学中……后面的有时间就写，先欠着哈！</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> MC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2026-06-25</title>
+      <link href="/2026/06/25/2026-06-25/"/>
+      <url>/2026/06/25/2026-06-25/</url>
+      
+        <content type="html"><![CDATA[<h1 id="我无疑是愤怒的！！！！！！！！！！"><a href="#我无疑是愤怒的！！！！！！！！！！" class="headerlink" title="我无疑是愤怒的！！！！！！！！！！"></a>我无疑是愤怒的！！！！！！！！！！</h1><p>一整天不知道是哪里在搞装修，也许是修路也许是拆楼，不清楚。我知道的是，咚咚咚哐哐哐弄了一整天，要吵死了qvq</p><p>白天还不怎么觉得。到了中午要睡觉的时候，那个B机子还在吵，就像养了条狗一直在耳朵边上汪汪汪一样。</p><p>这也就算了，更可气的是，某个体弱多病语文老师<strong>大夏天的贴个暖宝宝来学校</strong>，还<strong>不让整个教室开空调</strong>（免费蒸桑拿了属于是）</p><p>这两项加起来，一整个中午就是 <strong>又热！ 又闷！ 又吵！</strong></p><p>然后了吧，又因为我昨晚<strong>拢共睡了没四个半小时</strong>，早上是靠咖啡续命才没挂的，这中午又睡不好觉，就完全导致了下午第一节课是带着气和困意上的。</p><p>而重要的来了：这节课老师让我们写卷子（家庭作业），我一整个就是<strong>牺牲掉了</strong>。</p><p>怎么理解呢？</p><p>这堂课刚开始的时候还是能写两个题的。坚持了没两分钟，直接累倒了，倒头就趴桌。<br>老师过来给我拽起来了后，睡倒是没继续睡，但是完全无法静下心来写题，满脑子都是外面机器的声音。</p><p>那种噪音谁听谁知道，完全就是隔着十万八千里的魔法攻击。而对于一个没休息好的学生来说，等同于在<code>魔抗 = 0</code>的时候来五个法师对着他使劲打连招。<br>反正我是再也不想体验一遍了。</p><h1 id="关于串子这件事"><a href="#关于串子这件事" class="headerlink" title="关于串子这件事"></a>关于串子这件事</h1><h2 id="不要小瞧EDG所有人的-啊！"><a href="#不要小瞧EDG所有人的-啊！" class="headerlink" title="不要小瞧EDG所有人的____啊！"></a>不要小瞧EDG所有人的____啊！</h2><p>自从kskbl又一次在网上爆火之后，连带着许多梗全部火了。</p><p>咱也不知道为啥，就咱EDG的爆火程度呢，就是连不玩瓦的都能来上两句<code>kskbl？zdjd？wkzkbl!</code></p><h3 id="关于语文课上的串子"><a href="#关于语文课上的串子" class="headerlink" title="关于语文课上的串子"></a>关于语文课上的串子</h3><p>来情景重现一下：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">当时正上着语文课，老师在讲一篇主题是“文学美”的小阅读。</span><br><span class="line"></span><br><span class="line">那当时她讲来劲了，就扯题外话说：“英语里面也有文学美”这之类的话。</span><br><span class="line"></span><br><span class="line">讲的是什么词呢？</span><br><span class="line"></span><br><span class="line">nobody</span><br><span class="line"></span><br><span class="line">她的意思是（我记不太清了，差不多就这个意思）：nobody既可以表示空无一人，也可以表示无人在意。</span><br></pre></td></tr></table></figure><p>这时候下面就有人开始串了。</p><p>老师问：nobody这个词什么意思啊？</p><p>有人答：没有人  ；有人答：小人物  ；也有人答：王森旭。</p><p>等…等等……<br>王森旭？<br><img src="https://cdn1.vvoch.chat/blog/%E5%A4%A7%E5%93%A5%E4%BD%A0%E4%BB%AC%E5%A4%AA%E5%9D%91%E4%BA%86.png" alt="Nobody"><br>wow<br>牛</p><h1 id="最后一个事了，我想感叹一下"><a href="#最后一个事了，我想感叹一下" class="headerlink" title="最后一个事了，我想感叹一下"></a>最后一个事了，我想感叹一下</h1><h2 id="这个班级真的神完了！"><a href="#这个班级真的神完了！" class="headerlink" title="这个班级真的神完了！"></a><strong>这个班级真的神完了！</strong></h2><p>怎么个神法呢？</p><p>人太杂了。</p><blockquote><p>按学习来分的话</p><blockquote><p>有学习成绩非常好的（稳坐第一考场的有好几个）<br>有学习成绩非常差劲的（稳坐倒数一二考场的也有好几个）<br>完全不学但是成绩一样很好的（当然有）</p></blockquote></blockquote><blockquote><p>按抽象程度来分的话</p><blockquote><p>有榆木脑袋<br>有生抽<br>那当然也有老抽</p></blockquote></blockquote><blockquote><p>再来</p><blockquote><p>有南通<br>有拉拉<br>有海王</p></blockquote></blockquote><p><strong>真是神人齐聚一堂啊!</strong></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>这学校有点意思我说实话</title>
+      <link href="/2026/06/25/%E6%98%AF%E5%B0%8F%E7%94%B7%E5%A8%98%E8%AF%B6/"/>
+      <url>/2026/06/25/%E6%98%AF%E5%B0%8F%E7%94%B7%E5%A8%98%E8%AF%B6/</url>
+      
+        <content type="html"><![CDATA[<p>转载自<a href = "https://v.douyin.com/OPgZCT2VjnI/">抖音@Hello喜马诺</a></p><img src = "https://cdn1.vvoch.chat/blog/%E8%BD%AC%E8%BD%BD/Screenshot_2026-06-25-00-40-43-516_com.ss.android.ugc.aweme-edit.jpg">]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> btfnlll </tag>
+            
+            <tag> 转载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2026-06-24</title>
+      <link href="/2026/06/24/2026-06-24/"/>
+      <url>/2026/06/24/2026-06-24/</url>
+      
+        <content type="html"><![CDATA[<h1 id="关于CDN和EdgeOne的思考"><a href="#关于CDN和EdgeOne的思考" class="headerlink" title="关于CDN和EdgeOne的思考"></a>关于CDN和EdgeOne的思考</h1><p>昨晚果果给我弄了一个<code>EdgeOne</code>（说是无限流量无限时长），我就在想：天底下哪里有这么好的事情？<strong>有猫腻</strong>！<br>今天一想，不对劲！</p><p>既然<code>OSS--&gt;CDN--&gt;User</code>要买两样东西 <code>CDN流量</code>和<code>CDN回流</code><br>那么，<code>OSS--&gt;Edgeone--&gt;User</code>是否也要买个什么回流呢？<br>否则不是直接走的<code>oss流量</code>吗？这玩意死贵死贵的！</p><h2 id="だから晚上回家搜了一下"><a href="#だから晚上回家搜了一下" class="headerlink" title="だから晚上回家搜了一下"></a>だから晚上回家搜了一下</h2><p>他是这么说的：</p><blockquote><p>传统CDN主打内容加速分发，计费模式简单直接，主要按实际使用的流量或带宽阶梯计费，可购买流量包抵扣。</p></blockquote><blockquote><p>EdgeOne则是集加速、安全防护（DDoS&#x2F;WAF）和边缘计算于一体的一站式平台，采用按月套餐订阅制（内含流量额度，超量后按量付费），且其资源包与传统CDN的流量包互不通用。</p></blockquote><p>那..既然这样的话，我还是用cdn吧先。毕竟还有<strong>80来个G流量包</strong>没用呢。可不能浪费呀哈哈！</p><h1 id="之前给咱班做的网站有点恶心到我了"><a href="#之前给咱班做的网站有点恶心到我了" class="headerlink" title="之前给咱班做的网站有点恶心到我了"></a><a href="801.vvoch.chat">之前给咱班做的网站</a>有点恶心到我了</h1><h2 id="在说这件事之前，先得把我的服务器链路弄清楚"><a href="#在说这件事之前，先得把我的服务器链路弄清楚" class="headerlink" title="在说这件事之前，先得把我的服务器链路弄清楚"></a>在说这件事之前，先得把我的服务器链路弄清楚</h2><p>首先，我有一台<code>带宽3Mbps的公网服务器(称作A)</code>+一台<code>200Mbps的公网服务器(称作B)</code>+一台<code>内网服务器（称作C）</code></p><p>之前买A主要是因为挂网站和Napcat、Astrbot，所以没咋注意带宽。</p><p>但是吧，云服务器基本都是虚拟机，所以说呢，<strong>QQ容易检测然后掉线</strong>。</p><p>所以我又购入了一台<code>小主机C</code>放在家里挂QQ。</p><p>但是，由于我<strong>家里没有公网ipv4</strong>，所以在外面访问不到服务器C的管理面板(包括ssh、各种应用的管理面板等等)</p><p>所以又花79块在阿里云弄了一台新用户的<code>大带宽服务器B</code>，和家里那台<code>服务器C</code>组一个<code>内网映射</code>(B挂frps，C挂frpc)</p><h2 id="然后，之前给咱班做的网站是怎么恶心到我的呢？"><a href="#然后，之前给咱班做的网站是怎么恶心到我的呢？" class="headerlink" title="然后，之前给咱班做的网站是怎么恶心到我的呢？"></a>然后，<a href="801.vvoch.chat">之前给咱班做的网站</a>是怎么恶心到我的呢？</h2><p>由于我害怕3Mbps的那台服务器A不够52人同时访问一个网站，于是就用了那一台大带宽<code>服务器B</code>。<br>但是但是，问题就出在这里！</p><p>frp如果要映射网页的话，<strong>就必须要80、443端口</strong>，<br>但是nginx挂网页<strong>也要80、443端口</strong>，<br>就导致这两个东西<strong>冲突了</strong>！</p><p>于是，我为了不影响到他们“订正”用网站，只能改了一下http、https的端口。<br>于是导致了我现在访问我内网机C上的网站时，非要在后面加上端口才行！<br>恶心死了！！！</p><p>だから我在学校就在想，回来搜一下看3Mbps到底够不够52人同时访问。<br>结果很显然，是不够的。<br>Deepseek这样说：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">1. 先看清 3Mbps 的实际传输能力</span><br><span class="line">3Mbps = 3,000,000 bps</span><br><span class="line"></span><br><span class="line">换算成字节：3,000,000 ÷ 8 = 375,000 字节/秒 ≈ 375 KB/秒</span><br><span class="line">这是服务器 上行带宽的理论上限（实际有协议开销，一般按 90%~95% 估算，约 340~350 KB/秒）。</span><br><span class="line"></span><br><span class="line">2. 52 人“同时”访问意味着什么？</span><br><span class="line">如果这 52 个人真的在同一瞬间发起请求（比如刷新页面），服务器需要在短时间内把页面内容传给他们。</span><br><span class="line"></span><br><span class="line">每个人平均能分到的带宽：</span><br><span class="line">375 KB/秒 ÷ 52 ≈ 7.2 KB/秒</span><br><span class="line"></span><br><span class="line">也就是说：要想在 1 秒内让所有人都加载完，每个页面的压缩后总大小不能超过 ≈ 7.2 KB。</span><br><span class="line">如果允许 2~3 秒加载完成，那么页面可以到 14~22 KB 左右。</span><br><span class="line"></span><br><span class="line">3. HTML 网页有多大？</span><br><span class="line">这里区分两种情况：</span><br><span class="line"></span><br><span class="line">✅ 情况一：纯文本 HTML 网页（仅 .html 文件）</span><br><span class="line">一个简单的文本页面（比如几个段落、链接）通常 2~5 KB，启用 Gzip 压缩后可能只有 1~3 KB。</span><br><span class="line"></span><br><span class="line">52 人同时请求，总数据量：52 × 3 KB = 156 KB，远小于 375 KB，1 秒内完全可以传完。</span><br><span class="line"></span><br><span class="line">结论：这种情况下 3Mbps 基本够用。</span><br><span class="line"></span><br><span class="line">❌ 情况二：包含图片、CSS、JS 的普通网页</span><br><span class="line">现在一个普通页面（HTML + CSS + JS + 图片）总大小轻松超过 200 KB，甚至上 MB。</span><br><span class="line"></span><br><span class="line">如果按 200 KB 算，52 人同时加载需要：200 KB × 52 = 10,400 KB ≈ 10.4 MB</span><br><span class="line">需要的带宽 ≈ 10.4 MB × 8 = 83.2 Mbps —— 3Mbps 远远不够。</span><br><span class="line"></span><br><span class="line">实际表现：带宽会瞬间打满，大部分用户需要排队，页面可能十几秒甚至更久才能出来。</span><br><span class="line"></span><br><span class="line">4. 还要考虑的现实因素</span><br><span class="line">请求开销：TCP 握手、HTTP 头部等会占用一些带宽，实际有效载荷会更低。</span><br><span class="line"></span><br><span class="line">浏览器并发：浏览器会同时请求页面上的多个资源（CSS、图片等），即使用户只打开一个网页，也会产生很多并发连接，进一步增加带宽压力。</span><br><span class="line"></span><br><span class="line">是否真的“同时”：真实场景中，52 个访问通常有几秒的分散，峰值需求会略低，但作为容量评估，按“同时并发”计算是安全的。</span><br><span class="line"></span><br><span class="line">其他服务：服务器本身可能还有系统更新、SSH 等其他流量，会挤占这 3Mbps。</span><br></pre></td></tr></table></figure><p>所以…唉…还是就着他们吧。</p><h1 id="学校趣事"><a href="#学校趣事" class="headerlink" title="学校趣事"></a>学校趣事</h1><h2 id="17-53英语考试中"><a href="#17-53英语考试中" class="headerlink" title="17:53英语考试中"></a>17:53英语考试中</h2><p>咱武老师路过龙xx的时候，说了一句 <code>菜就多练</code><br>靠靠靠<br>笑死我了</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>睡觉</title>
+      <link href="/2026/06/23/%E7%9D%A1%E8%A7%89/"/>
+      <url>/2026/06/23/%E7%9D%A1%E8%A7%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="不许再玩了！！！！！"><a href="#不许再玩了！！！！！" class="headerlink" title="不许再玩了！！！！！"></a>不许再玩了！！！！！</h1><h1 id="睡觉！！！！！！！！！！"><a href="#睡觉！！！！！！！！！！" class="headerlink" title="睡觉！！！！！！！！！！"></a><strong>睡觉！！！！！！！！！！</strong></h1>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2026/06/23</title>
+      <link href="/2026/06/23/2026-06-23/"/>
+      <url>/2026/06/23/2026-06-23/</url>
+      
+        <content type="html"><![CDATA[<h1 id="关于域名的问题"><a href="#关于域名的问题" class="headerlink" title="关于域名的问题"></a>关于域名的问题</h1><p>今天在学校就在想，我这个<code>blog</code>是托管在<code>githubPages</code>上的，然后我不知道会不会审核到二级域名影响到我的备案(<a href = "https://vvoch.chat"><code>vvoch.chat</code></a>)。</p><p>要是我往里面放了一些…咋说…违规的东西吧，，怕给我域名弄没了。</p><p>所以刚刚我干脆又买了个域名<code>vvoch.cn</code>，花了33块。</p><p>想来这样应该就不会挂了吧。</p><p>等域名审核通过之后我把我这个blog直接转到<code>vvoch.cn</code>这个域名上去。反正是托管在<code>githubPages</code>上的不用备案。</p><p>现在就只有干等<code>“CNNIC 注册局命名审核中”</code>这玩意了。</p><h1 id="学校的趣事"><a href="#学校的趣事" class="headerlink" title="学校的趣事"></a>学校的趣事</h1><p>今天下午<code>15:30</code>的时候，上语文课。</p><p>余老师让我们写作文的要素与内涵，她下来巡视。</p><p>结果，看到我身后的一位同学(不知道是谁)的时候，说了一句非常抽象的话。</p><p><code>对的对的，写得好！</code> 然后又补了一句 <strong><code>关中王来了</code></strong></p><p>顿时全班整个就炸开了，笑死笑死，真的。</p><h1 id="回家之后"><a href="#回家之后" class="headerlink" title="回家之后"></a>回家之后</h1><p>一回家，本想来写日记的，一进我的blog网站，发现：诶！我的rikka咋没了？一看，所有用了<code>cdn</code>的图片都没了！</p><p>一时间我顿感不妙，因为还有我们班上的试卷订正在腾讯<code>oss</code>上挂着。要是<code>cdn</code>炸了视频也看不了了！</p><p>于是我赶紧看是什么原因。结果看到一条短信：<code>【腾讯云】尊敬的腾讯云用户，你好。截至北京时间2026-06-23 10:09:09，您的账号（账号ID：100031808307，昵称：Jan_Vvoch）已欠费0.02元（含按量计费冻结金额），您的按量计费资源：内容分发网络 CDN已于今日停服。资源停服后无法继续使用，资源释放后数据将无法找回。您可前往“腾讯云助手”小程序查询扣费明细并快速充值 https://mc.tencent.com/cxSbrGgt ，以免影响资源正常使用。更多信息请查阅站内信或邮件。</code></p><p>www我真就是一整个裂了。我还寻思说<code>100G的cdn流量</code>+<code>50G的cdn回流</code>全用完了呢！</p><p>于是我赶紧去看。</p><p>呼~还好，只是<code>oss</code>当时直链测试的40MB欠费了。吓死宝宝了！</p><h1 id="我真是SB"><a href="#我真是SB" class="headerlink" title="我真是SB"></a>我真是SB</h1><p>靠 买了个鬼cn域名 又贵 还有审核 严的很 c 我还想放点比较emm的内容在我blog上呢</p><p>于是我又买了个<code>jvvoch.space</code> 嘻嘻</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>力竭了</title>
+      <link href="/2026/06/23/%E5%8A%9B%E7%AB%AD%E4%BA%86/"/>
+      <url>/2026/06/23/%E5%8A%9B%E7%AB%AD%E4%BA%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="力竭了"><a href="#力竭了" class="headerlink" title="力竭了"></a>力竭了</h1><p>我真就裂开了兄弟<br>写了俩小时作业发现笔都没拿<br>那还说啥了<br>明天继续浪费6块钱买咖啡呗</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>萝莉圣经</title>
+      <link href="/2026/06/22/%E8%90%9D%E8%8E%89%E5%9C%A3%E7%BB%8F/"/>
+      <url>/2026/06/22/%E8%90%9D%E8%8E%89%E5%9C%A3%E7%BB%8F/</url>
+      
+        <content type="html"><![CDATA[<p><strong>转载自<a href = "https://www.lyxnxia.space/blog/019e93b4-dc1a-7490-8e01-b05f48075d24">Xiaxiaobai Blog</a></strong><br><strong>经过一段时间的调整，可算把这篇文章又重新发上来了。详见<a href = "https://www.jvvoch.space/2026/06/23/2026-06-23/"><code>2026-6-23日记</code></a></strong></p><h1 id="玫瑰不用长高，恋者自会弯腰"><a href="#玫瑰不用长高，恋者自会弯腰" class="headerlink" title="玫瑰不用长高，恋者自会弯腰"></a>玫瑰不用长高，恋者自会弯腰</h1><p>直接电还是走流程？</p><h2 id="圣经第一章"><a href="#圣经第一章" class="headerlink" title="圣经第一章"></a>圣经第一章</h2><p>你要写萝莉妈妈，就不能只写萝莉妈妈，要写晨光，爬上她睡乱的栗色短发，发丝细软地贴在沁着薄汗的额角，写他半梦半醒间哼唧着往你怀里钻，手臂环过来时，带着孩童似的依赖与不容置疑的占有。</p><p>要写他记着明显过大的围裙踩在小凳上，叮叮当当的准备早餐，锅铲与煎蛋的滋滋声里混着他不成调的雀跃的哼唱，写他午后蜷在沙发一角看书，脚丫悬空晃悠，袜尖上两只猫咪图案跟着点头。</p><p>嫌你疲惫，归家时怕小，跑过来接过包，仰起脸，眼里盛着全然的欢喜与了然，说出那句具有魔力的话，你回来了，辛苦了呢。</p><p>嗓音清甜，却带着能熨平一切皱褶的笃定要写，她生气时微微鼓起的脸颊像含了松果，道理却讲的比你更清晰，写他偷偷省钱为你准备礼物时。</p><p>那副混杂着精明与羞涩的神态，仿佛守护着一个世界级的秘密，而你在他身边，终于懂得渴望的，不是被稚嫩依附，而是在这广袤孤寂的人世间，能与一个灵魂彼此认领，她以娇小身躯撑起一方晴空。</p><p>用未染尘埃的透亮眼眸，映照出你值得被如此温柔对待的模样，萝莉妈妈便是这般奇迹，她同时是你想要守护的整个春天和让你安然栖息的开满花的屋檐。</p><h2 id="圣经第二章"><a href="#圣经第二章" class="headerlink" title="圣经第二章"></a>圣经第二章</h2><p>首先区别一个概念，萝莉妈妈既不是那些未成年就怀孕的傻孩子，也不是传统的合法萝莉，而是特指虽然是十二三岁的萝莉，但略微早熟一点，有着母亲般包容与关爱的性格，却又有着小孩子特有的天真无邪，是一种仅存于二次元的理想，一种极具反差感的矛盾综合体。其核心在于萝莉的外在与母性的内在的对立性，既能如母亲般温柔地关爱你，却又和女儿一样吸引人的保护欲，是女儿与母亲的合体，是世间最宝贵特质的总和。</p><p>一方面，因为萝莉所特有的天真无邪的特点，来自于萝莉妈妈的母性关怀将更加纯粹，没有一丝成年人世界的肮脏，只有最纯洁的关爱。同时，萝莉娇小的体型与母亲般的温柔也将形成一种绝妙的反差美，堪称人间最宝贵的礼物，当你疲惫回家时，来自萝莉妈妈那娇小可人的白丝膝枕将成为最美妙的享受。来自母性的关爱使人不自觉露出最脆弱的一面，但萝莉那娇小的体型却会令人产生浓浓的占有欲，这种占有与被占有的矛盾也令人甘之如饴。</p><p>另一方面，萝莉妈妈因为早熟和小孩子式懂事，往往会勉强自己来努力，但受自身年龄能力等限制，反而容易使自己受伤。这种努力的脆弱性将更能能激发人的保护欲，如同寒冬中腊梅的花苞一般，既令人期待它的盛开，又让人对其能否战胜严寒而担忧，使人发自心底想要去保护、去呵护。</p><p>这两种对立般的特质在萝莉妈妈身上你中有我我中有你，相互影响却又相互促进，两者互相衬托，形成最鲜明的对比。母亲与女儿两种角色在其身上同时出现，达成一种完美的平衡，并产生一种虚幻的、如同镜中水月的美好，是女性完美特质的结合</p><h2 id="圣经第三章"><a href="#圣经第三章" class="headerlink" title="圣经第三章"></a>圣经第三章</h2><p>喜萝莉，不以身体娇小而嫌之，是为仁</p><p>喜少女，不以其青春懵懂而弃之，是为义</p><p>喜少妇，不以其曾嫁他人而厌之，是为诚</p><p>喜熟女，不以其年长成熟而鄙之，是为恒</p><p>喜花女，不以其无法相伴而悔之，是为智</p><p>故而曰 君子五德</p><h2 id="圣经第四章"><a href="#圣经第四章" class="headerlink" title="圣经第四章"></a>圣经第四章</h2><p>诸君我喜欢萝莉！🥰</p><p>不论是活泼可爱的萝莉，高冷淡漠的萝莉，天然呆萌的萝莉，还是腹黑阴暗的萝莉。🤗</p><p>我喜欢看萝莉们天真无邪的笑容，喜欢看萝莉们认真的表情，慵懒的表情，生气的表情，迷茫的表情，害怕的表情，伤心的表情，无所谓的表情，也喜欢面无表情的萝莉。🥰</p><p>诸君我喜欢萝莉！😍</p><p>无论是看她们玩耍，还是看她们吵架，我喜欢萝莉的一切，她们就是纯洁的天使，是春季含苞待放的鲜花，是夏季不经意的一丝微风，是秋季清澈孱弱的小溪，是冬季星星点点的初雪，也有的是调皮捣蛋但又可爱的小恶魔。😇</p><p>我最喜欢的，是二次元的萝莉，永远长不大的萝莉，一千岁的萝莉，永远十七岁的萝莉，只要看到她们就感觉身心愉悦，咕啾咕啾的坏心情统统被一扫而空，那种美妙的感觉，啊啊啊啊啊啊，大脑都在颤抖，嘿，嘿嘿嘿，哈哈哈哈，所以说，诸君！我喜欢萝莉！😚</p><p>可爱即是正义，萝莉即是正义，萝莉终将会统治全宇宙！🥵 所以说！！！🥵诸君！喜欢萝莉吧！🥵追随萝莉的脚步！！🥵把对萝莉的爱传播到宇宙的任何角落！🥵不！！🥵即便是宇宙也无法阻止我们的脚步！🥵宇宙之外有没有萝莉！！🥵宇宙之外有没有人喜欢萝莉！！🥵要把对萝莉的爱传播到一切的尽头！！！🥵 诸君，我喜欢萝莉。😌</p><h2 id="圣经第五章"><a href="#圣经第五章" class="headerlink" title="圣经第五章"></a>圣经第五章</h2><p>《萝莉论》</p><p>夫天地生物，造化玄机。万物生灵，各具其性。若论灵秀之极者，无出萝莉。所为萝莉者。造物之绝，天宫之绝。其质若莲。生于淤泥而不染其浊，长于陋巷不改其心。朝含春露，花心可可。清涟濯水，腰资婷婷。淑雅天然，浑脱俗味。危峰虽峻，徒令仰止。偶令攀爬，方可怡情。沃野虽平，毓秀灵蕴。常使耕耘，朝夕不辍。若夫萝莉未满 年岁尚幼，然不解人情，世事难辨。亦或是韶龄渐长，及笄既过。情态含妩眉眼藏媚，或生妍嗤偏嫌。娇嗔无端，喜怒易色。或朱铅饰貌，浑失天然，与俗艳同流。纵有婷婷之姿，秾丽之容。然机心满腹，纯真渐隐。故而不喜少女而独爱萝莉也。余所慕者，非关年岁，唯系天真。故曰：世之至宝，无非金玉；人之芳年，无非萝莉。女子之龄，比之天穹明月。多一分则盈，少一分则亏。彼之妙处，在乎枢机。天道之理，无非如此。嗟乎！世人多慕二八，然不知华年之极，在于豆蔻未开之时。每思至此，莫不扼腕太息，终至怆然。</p><h2 id="圣经第六章"><a href="#圣经第六章" class="headerlink" title="圣经第六章"></a>圣经第六章</h2><p>我偏爱那份未经世事雕琢的澄澈，如同偏爱初雪不染尘，偏爱月光落人间。 我欣赏的从来不是稚嫩的皮囊，而是那份眼底未被世俗磨平的天真，是灵魂里尚未沾染烟火的干净，是一颗心赤诚坦荡、不藏机心的纯粹。</p><p>我所倾心的，是灵魂的清澈，而非年龄的边界； 我所珍视的，是心性的纯真，而非外表的娇憨。</p><p>君子之心，如清风朗月，有所爱，亦有所守； 有所慕，更有所敬。 我心向澄澈，只护一份干净美好，无关风月偏颇，更无半分逾矩。</p><p>喜欢的是干净的灵魂，不是年幼的躯壳。</p><h2 id="不过吧"><a href="#不过吧" class="headerlink" title="不过吧"></a>不过吧</h2><p>如果……如果……你真的想在现实生活中“推倒萝莉”，我只能说：我铐，你太刑了。</p><p>注意</p><p>中华人民共和国刑法第二百三十六条第二款规定：“奸淫不满十四周岁的幼女的，以强奸论，从重处罚。”在司法解释中，凡与未满14周岁的女子发生性关系，不论该女子是否自愿，都属于强奸罪。也就是说中国的刑法“幼女”概念指不满14周岁的女性。</p><p><strong>所以，还是一起来欣赏那些二次元中软萌好rua的萝莉吧！（づ￣3￣）づ╭❤～</strong></p><h1 id="接下来、、咳咳"><a href="#接下来、、咳咳" class="headerlink" title="接下来、、咳咳"></a>接下来、、咳咳</h1><p><strong>希望下面这段数字不会闪瞎你的眼睛</strong></p><p>441594,121579,1216342,377532,259194,1081635,61257,1098369,516742,20348,395280,416888,267950,80358,374260,618742,1079288,1259148,127282,402127,586558,76624,94065,1252128,1246547,1246507,234544,499639,1202601,110777,1215927,1123424,1046293,1442605,1441966,1440544,1440502,1439591,1439552,1428493,1295000,1119889,336997,365946,303042,299225,248682,293861,281963,41232,4952,1047231,292020,36334,222458,1239341,1166075,1231592,1202344,11202016,405242,1426534,1377810,1360068,1055523,1248768,1232450,600056,570593,478023,477116,239511,404342,265012,442168,1189643,1195625,1195642,1192397,1194858,1193308,1107589,1191813,1191264,540664,1179161,1187379,351833,1175427,1175428,1175282,1145801,1060335,1267230,1440434,1443200,1220905,542612,454278,1304768,1251609,137903,1152945,1244831,1144796,438513,122349,135865,1097319,330028,1137759,1126673,1133554,1119855,1122267,1117792,1117258,1095338,1094077,279464,427692,605753,39470,427909,1441347,1258333,1205178,1058215,1095541,1423366,1444946,1442470,1259276,304614,1308299,1443377,1441257,1409426,540889,1443105,1434731,1220749,1401474,301440,392639,1203269,1235119,1426472,1080409,513113,672430,432910,1092031,591506,1020687,590284,1433587,1422195,1439363,1229770,1282737,1246890,501413,1259223,1034610,549758,476113,1217438,1216339,1210649,1229930,1437326,1227842,1025331,474509,1430837,568034,547181,1427813,646443,1230073,1052240,1285571,1259168,473701,1438279,1232657,335205,361858,1445432,1221779,446025,349763,1182983,1074439,1212883,1239129,464883,1218639,1430853,1440880,1371181,1171888,1405779,1254705,1037952,1060255,1201206,496992,194713,1255863,1210116,530138,1233951,499628,1251602,1243126,1247648,1244025,443570,541784,195509,1228586,516744,23378,1227203,379756,1202450,1054220,1240142,1030219,1215269,1028670,1200495,1026828,1221139,1227564,394311,1225434,118581,1229412,1202415,430385,275530,217710,5623,188631,102629,337015,250517,330290,314935,218183,404474,277565,400511,401606,388141,478548,501488,494431,485050,605158,1060255,1212119,554743,95647,1213733,482797,499294,1166843,296830,1224311,1215194,1227705,1132111,1163686,1111918,1120618,1232438,500737,1214554,641840,304020,614610,646443,1225512,1226581,1227842,642381,1222419,475378,505703,1192553,1437827,1259249,1440192,631792,624396,1226610,482728,1208240,102488,217900,1221470,632648,1221865,1045524,1198596,1062234,484858,42386,1020473,1217797,12115617,1227662,1227208,1200489,1203220,304020,1213987,1034523,1222496,1125669,1222335</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> btfnlll </tag>
+            
+            <tag> 转载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>做个计算题</title>
+      <link href="/2026/06/22/%E5%81%9A%E4%B8%AA%E8%AE%A1%E7%AE%97%E9%A2%98/"/>
+      <url>/2026/06/22/%E5%81%9A%E4%B8%AA%E8%AE%A1%E7%AE%97%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="来做个计算题"><a href="#来做个计算题" class="headerlink" title="来做个计算题"></a>来做个计算题</h1><p><code>语文</code> 一张试卷 <code>20min~2h</code><br><code>数学</code> 订正 <code>30min~1h</code><br><code>英语</code> 复习1 <code>20min~2h</code><br><code>政治</code> 写完了 <code>/</code><br><code>历史</code> 写完了 <code>/</code><br><code>物理</code> 一张试卷 <code>1h~2h</code><br><code>合计</code>        <code>130min(2h+)~7h</code><br>靠靠靠<br>我真就糊了啊<br>一整个<code>端午</code>+<code>中考</code>光去搞网站去了<a href = "https://801.vvoch.chat/"><code>801.vvoch.chat</code></a><br>66666</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>真想给我自己一巴掌</title>
+      <link href="/2026/06/22/%E7%9C%9F%E6%83%B3%E7%BB%99%E6%88%91%E8%87%AA%E5%B7%B1%E4%B8%80%E5%B7%B4%E6%8E%8C/"/>
+      <url>/2026/06/22/%E7%9C%9F%E6%83%B3%E7%BB%99%E6%88%91%E8%87%AA%E5%B7%B1%E4%B8%80%E5%B7%B4%E6%8E%8C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="我真裂开了xdm"><a href="#我真裂开了xdm" class="headerlink" title="我真裂开了xdm"></a>我真裂开了xdm</h1><p>现在是2026&#x2F;6&#x2F;22 21:48p.m.<br>作业依旧一笔没动……<br>本来说6点开始写的<br>被这个blog吸引了，搞到一个小时前<code>注意是一个小时前</code><br>然后这一个小时一直在拖<br>一直在凑整，有人能理解吗……<br>到底能咋样aaaaaa</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>开始</title>
+      <link href="/2026/06/22/%E5%BC%80%E5%A7%8B/"/>
+      <url>/2026/06/22/%E5%BC%80%E5%A7%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="懒得写标题了"><a href="#懒得写标题了" class="headerlink" title="懒得写标题了"></a>懒得写标题了</h1><p>对于这个博客来讲，我无疑是心血来潮的。作业也没写，待会赶。就这样吧，时间不多了。欢迎来我的主网站<a href = "https://www.vvoch.chat/"><code>https://www.vvoch.chat/</code></a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
