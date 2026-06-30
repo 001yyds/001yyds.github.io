@@ -1,0 +1,4 @@
+/* 仅在"感悟类文章"或"长文章"分类下段落缩进 */
+body.category-indent #article-container p {
+  text-indent: 2em;
+}
