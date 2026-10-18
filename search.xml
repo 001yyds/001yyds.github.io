@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>从Windows换到ArchLinux的感想</title>
+      <link href="/2026/10/18/%E4%BB%8EWindows%E6%8D%A2%E5%88%B0ArchLinux%E7%9A%84%E6%84%9F%E6%83%B3/"/>
+      <url>/2026/10/18/%E4%BB%8EWindows%E6%8D%A2%E5%88%B0ArchLinux%E7%9A%84%E6%84%9F%E6%83%B3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇文章看标题也知道，是我从Windows主系统换位Archlinux的使用体验感受</p><p>这篇文章是我在2026&#x2F;10&#x2F;14在学校里用日记本手写的文章，腾到我blog里面的</p><p>所以里面肯定是有很多东西不正确的（毕竟用不了搜索引擎，我也刚接触没多久吧AWA）</p><p>很多地方当时理解出了问题，为了保证从日记本上抄过来原汁原味，很多地方我都没进行更改</p><p>话不多说开始吧</p><h1 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h1><p>CPU: AMD R5 5600<br/>GPU: AMD rx 5600xt<br/>RAM: DDR4 3200MHz 16G<br/>niri+Wayland桌面<br/>用的这个主题<a href="https://github.com/sky1234762/ZEK-niri">https://github.com/sky1234762/ZEK-niri</a></p><h1 id="启动速度对比"><a href="#启动速度对比" class="headerlink" title="启动速度对比"></a>启动速度对比</h1><p>首先，开机时就能发现一个很明显的区别：开机速度比win那边块、快了一大截。本当。</p><h1 id="进系统之后最直观的感受"><a href="#进系统之后最直观的感受" class="headerlink" title="进系统之后最直观的感受"></a>进系统之后最直观的感受</h1><p>开机之后吧，进系统之后，并没有(完全没有)什么开机自启动的程序(可能是niri设置？) 其实之前Fcitx也开机起不来，我把“fcitx”加到systemd开机自启了。</p><p>其次，到桌面后，顶部只有一个状态栏，所有功能都在顶部，也就是说，整一个桌面在默认状态下是空的，就可以说放点好看的东西嘿嘿嘿嘿<br><img src="https://cdn.web.small.vvoch.chat/blog/arch/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20261018145208_58_17.png" alt="image"></p><h1 id="操作层面讲"><a href="#操作层面讲" class="headerlink" title="操作层面讲"></a>操作层面讲</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>再往后讲，在系统操作方面说，说从Windows转Linux最大也是最具质的区别，就是操作方式了吧。</p><p>在Windows中，有一套成熟的图形操作模式，对于新手来说是十分好操作的。而且，Windows上的教程一艘一大把。到了Linux，最主要的，就是靠一行一行代码与系统对话。</p><p>有人说：“Linux主流发行版不是都有图形操作界面吗？” 实际上，Linux的图形操作界面作用远远没有Windows那一套大，也就是说并不能只依靠图形界面来进行操作。最主要的，还是通过命令行来操作系统。</p><p>特别地，对于Arch Linux来说，网上教程基本很多过时了。这里的“过时”指的并不是指令、方法过时，而是依赖于Arch独特的软件包管理机制下的许多软件包都过时了。这直接导致了Arch的软件时效可能会非常短。很多时候，要找一个软件，可能要跨越千山万水，从Arch wiki查到github，从pacman试到yay，这其中需要付出无数的试错成本。所以，时间这块的付出当然也是必不可少的。</p><p>讲个笑话，因为我在之前是有过Ubuntu使用经验的，所以在Arch里，刚接触到的我，还在用Ubuntu那一套老思路，在那里sudo apt install搞这些东西，虽然实际上肯定是拉不下来，而且蛮捞的吧但是… 总之，多了一段奇妙的经历吧哈哈。</p><p>闲话扯完，该回来了</p><p>再讲一下，在实际使用过程中，Arch Linux是怎么圈粉我的。在我niri + wayland的桌面环境下，各个窗口间的拖动真的非常丝滑，就像吃了德芙般的开塞露。是的。流畅度这块感觉真可以<br>和某“アメリカ”的某大公司比较一下。</p><h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>当然了，也不能完全捧高高。优点这么多，缺点肯定还是有的。如果真有这样一个处处完美的系统，那Windows市占率也不会居高不下了。下面我将十分片面的，仅代表我个人观点的，仅为我使用下的遇到的一些问题、bug和一些不足之处。</p><h3 id="软讲方面来讲"><a href="#软讲方面来讲" class="headerlink" title="软讲方面来讲"></a>软讲方面来讲</h3><p>其一，Linux下，软件环境肯定是不如Windows的。特别地，对于Arch，这样的情况将被进一步放大。为什么呢？前文我们提到过：“Windows的市场占有率绝对是老大哥在系统这块”所以，对于绝大部分的软件厂家来说，给Linux做适配，成本高不说，亏钱的风险还大。就算算厂家们给Linux做适配，大多也是对于Ubuntu、Debian这样相对来说“大众”一些的Linux发行版。</p><p>对于这群Arch用户嘛……<br>“我有不赚钱，做它干甚？费力不讨好的活”是大多软件厂商的真实写照。所以，时常的，在网上如果搜不到软件的Arch Linux版本，就只能寄希望于AppImage了（debtap不算）。所以说，Arch Linux就很……处在这个位置的话……</p><h3 id="BUG方面来讲"><a href="#BUG方面来讲" class="headerlink" title="BUG方面来讲"></a>BUG方面来讲</h3><p>好吧其实当时在学校写到这一段的时候马上就要数学考试了，所以没来得及写完。又因为当时没列提纲，脚踩西瓜皮滑倒哪里算哪里。所以吧，我自己都忘记了我要写什么东西了qwq</p><h1 id="真实手稿"><a href="#真实手稿" class="headerlink" title="真实手稿"></a>真实手稿</h1><p><img src="https://cdn.web.small.vvoch.chat/blog/arch/1.png" alt="image"><br><img src="https://cdn.web.small.vvoch.chat/blog/arch/2.jpg" alt="image"><br><img src="https://cdn.web.small.vvoch.chat/blog/arch/3.jpg" alt="image"><br><img src="https://cdn.web.small.vvoch.chat/blog/arch/4.jpg" alt="image"><br><img src="https://cdn.web.small.vvoch.chat/blog/arch/5.jpg" alt="image"><br><img src="https://cdn.web.small.vvoch.chat/blog/arch/6.jpg" alt="image"><br><img src="https://cdn.web.small.vvoch.chat/blog/arch/7.jpg" alt="image"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 长文章 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+            <tag> 长文章 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>科学上网（VPN）保姆教程(全免费)</title>
       <link href="/2026/09/13/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%88VPN%EF%BC%89%E4%BF%9D%E5%A7%86%E6%95%99%E7%A8%8B(%E5%85%A8%E5%85%8D%E8%B4%B9)/"/>
       <url>/2026/09/13/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%88VPN%EF%BC%89%E4%BF%9D%E5%A7%86%E6%95%99%E7%A8%8B(%E5%85%A8%E5%85%8D%E8%B4%B9)/</url>
@@ -173,31 +200,6 @@
     
     
     <entry>
-      <title>2026-07-02</title>
-      <link href="/2026/07/02/2026-07-02/"/>
-      <url>/2026/07/02/2026-07-02/</url>
-      
-        <content type="html"><![CDATA[<h1 id="考试"><a href="#考试" class="headerlink" title="考试"></a>考试</h1><p>昨天考完，今天放假了。没啥好说的。<br>明天领成绩单，听天由命吧。<br>唉</p><h1 id="MC"><a href="#MC" class="headerlink" title="MC"></a>MC</h1><p>昨晚和浩宇嘉康放学回来MC一直打到十点</p><p>就是，打到一半班主任给我发个消息让我帮个忙，，<br>我一下子说把龙打了就干活的，，<br>谁知道玩着玩着诶嘿 忘记了<br>那还说啥了<br>靠</p><h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>好了，今天有时间把mc那个教程再往后搞一下。就这样吧。拜拜</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 日常 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>啧</title>
       <link href="/2026/07/01/%E5%95%A7/"/>
       <url>/2026/07/01/%E5%95%A7/</url>
@@ -236,56 +238,6 @@
             <tag> 日常 </tag>
             
             <tag> 长文章 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>2026-06-30</title>
-      <link href="/2026/06/30/2026-06-30/"/>
-      <url>/2026/06/30/2026-06-30/</url>
-      
-        <content type="html"><![CDATA[<h1 id="考试…"><a href="#考试…" class="headerlink" title="考试…"></a>考试…</h1><p><strong>真没招了</strong></p><h2 id="语文"><a href="#语文" class="headerlink" title="语文"></a>语文</h2><p>第一门语文考完感觉算是废了</p><p>阅读是看不懂的<br>文言文是更看不懂的<br>作文更是连材料在讲什么都不知道<br>靠</p><h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><p>不过了吧<br>数学考得还行<br>只是有几道题眼瞎<br>不该错的扣了三分</p><h2 id="政治"><a href="#政治" class="headerlink" title="政治"></a>政治</h2><p>政治也还行吧<br>但是选择前三题没有一个是确定的<br>感觉之前学的东西全忘光了有没有</p><h2 id="x"><a href="#x" class="headerlink" title="x"></a>x</h2><p>看明天考咋样吧只能<br>希望不要太烂…<br>考完就解放了！</p><h1 id="学校趣事"><a href="#学校趣事" class="headerlink" title="学校趣事"></a>学校趣事</h1><p>中午<br>XXL（数学老师）跟我们讲 说</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">今天早上我监考最后一个考场</span><br><span class="line">受了两个半小时的心灵摧残</span><br><span class="line"></span><br><span class="line">所以，</span><br><span class="line">学校给学生分组是很有必要的。</span><br><span class="line"></span><br><span class="line">要是把每个班前十的学生放到一个班，</span><br><span class="line">那这个班指定越学越好。</span><br><span class="line"></span><br><span class="line">要是把每个班10~20的学生放到一起，</span><br><span class="line">那这个班肯定也很好教。</span><br><span class="line"></span><br><span class="line">所以！</span><br><span class="line">我花几分んんん钟时间</span><br><span class="line">把上次剩的《数据分组》讲完</span><br></pre></td></tr></table></figure><p>我们真是没想到她会来这一出的<br>lmao!~</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 日常 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>2026-06-29</title>
-      <link href="/2026/06/29/2026-06-29/"/>
-      <url>/2026/06/29/2026-06-29/</url>
-      
-        <content type="html"><![CDATA[<h1 id="我也不知道我在说什么"><a href="#我也不知道我在说什么" class="headerlink" title="我也不知道我在说什么"></a>我也不知道我在说什么</h1><p>回家一看日记本：上面第一句写了<code>全是片假名谁看得懂啊！</code><br>我自己都不知道何意味:(<br>就这样吧。想起来了再回来补充</p><h1 id="就在刚刚"><a href="#就在刚刚" class="headerlink" title="就在刚刚!"></a>就在刚刚!</h1><p>我一直用的是<code>VScode</code>写日记嘛<br>刚刚上面那个<code>:(</code>这里，VScode自动把只有一边的括号标红了！<br>也就是什么样子呢？<br><img src="https://cdn.web.small.vvoch.chat/blog/likethis.png" alt="Like This"><br>简直太生动了吧我说<br>哈哈哈哈哈</p><h1 id="依旧学校的事"><a href="#依旧学校的事" class="headerlink" title="依旧学校的事"></a>依旧学校的事</h1><h2 id="XXL-数学老师-依旧玩梗"><a href="#XXL-数学老师-依旧玩梗" class="headerlink" title="XXL(数学老师)依旧玩梗"></a>XXL(数学老师)依旧玩梗</h2><p>她说：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">“由于明天期末考试，学校今天把所有副课（我们班下午有两节）都停掉了。</span><br><span class="line">我本来准备两节课让你们读历史，</span><br><span class="line">但是看你们今天这个鬼样子，又像吃了鸦片样的。</span><br><span class="line">那就这样！一节课读历史，一节课上数学！</span><br><span class="line">**我知道你们最喜欢上数学了的**。”</span><br></pre></td></tr></table></figure><p>就在这时，一位同学（LJB）提出异议：<code>“啊~”</code>了一声。</p><p>好了，被XXL听到了，于是她说：<code>“我之前跟你怎么说的？遇到不喜欢的事先干什么？”</code><br>下面这时一堆人起哄：<code>“受着！”</code><br>霎那间，教室里笑声此起彼伏。就连老师也笑得前仰后合：<code>“对！”</code></p><p>反正我是已经笑死了的。XD:</p><h2 id="上午第四节：政治课"><a href="#上午第四节：政治课" class="headerlink" title="上午第四节：政治课"></a>上午第四节：政治课</h2><p>刘H（政治老师）给我们亮了个笑话，说：<code>“十几年前的一次四月调考。有一道题里面有‘蓝图’俩字。有位考生就问老师说：‘老师，我没有蓝笔怎么办？’”</code></p><p>咱也不知道真假，反正老师说的就信呗。</p><h2 id="XXL至理名言"><a href="#XXL至理名言" class="headerlink" title="XXL至理名言"></a>XXL至理名言</h2><blockquote><p>收不进（知识点）了是不？<br>那就收了再说<br>有没有道理？</p></blockquote><h1 id="请假"><a href="#请假" class="headerlink" title="请假"></a>请假</h1><p>这几天期末考试，有点忙。<br>所以这篇<a href="/2026/06/25/Minecraft%20Java版（Windows）下载、Mod安装与联机保姆级教程/">Minecraft教程</a>就只能拖几天了。考完就肝！<br><strong>絶対に試験が終わったら書き始める！</strong></p><h1 id="一些其他的小心思"><a href="#一些其他的小心思" class="headerlink" title="一些其他的小心思"></a>一些其他的小心思</h1><p>今天还说想把我那些打瓦攒的ACE全部剪辑好塞到OSS里面，然后放到blog里来着。这个过两天搞吧！</p><p>还要新写两个教程：1、如何添加整合包 2、叶枫的大豪宅！！！！！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 日常 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
             
         </tags>
       
@@ -450,31 +402,6 @@
     
     
     <entry>
-      <title>2026-06-25</title>
-      <link href="/2026/06/25/2026-06-25/"/>
-      <url>/2026/06/25/2026-06-25/</url>
-      
-        <content type="html"><![CDATA[<h1 id="我无疑是愤怒的！！！！！！！！！！"><a href="#我无疑是愤怒的！！！！！！！！！！" class="headerlink" title="我无疑是愤怒的！！！！！！！！！！"></a>我无疑是愤怒的！！！！！！！！！！</h1><p>一整天不知道是哪里在搞装修，也许是修路也许是拆楼，不清楚。我知道的是，咚咚咚哐哐哐弄了一整天，要吵死了qvq</p><p>白天还不怎么觉得。到了中午要睡觉的时候，那个B机子还在吵，就像养了条狗一直在耳朵边上汪汪汪一样。</p><p>这也就算了，更可气的是，某个体弱多病语文老师<strong>大夏天的贴个暖宝宝来学校</strong>，还<strong>不让整个教室开空调</strong>（免费蒸桑拿了属于是）</p><p>这两项加起来，一整个中午就是 <strong>又热！ 又闷！ 又吵！</strong></p><p>然后了吧，又因为我昨晚<strong>拢共睡了没四个半小时</strong>，早上是靠咖啡续命才没挂的，这中午又睡不好觉，就完全导致了下午第一节课是带着气和困意上的。</p><p>而重要的来了：这节课老师让我们写卷子（家庭作业），我一整个就是<strong>牺牲掉了</strong>。</p><p>怎么理解呢？</p><p>这堂课刚开始的时候还是能写两个题的。坚持了没两分钟，直接累倒了，倒头就趴桌。<br>老师过来给我拽起来了后，睡倒是没继续睡，但是完全无法静下心来写题，满脑子都是外面机器的声音。</p><p>那种噪音谁听谁知道，完全就是隔着十万八千里的魔法攻击。而对于一个没休息好的学生来说，等同于在<code>魔抗 = 0</code>的时候来五个法师对着他使劲打连招。<br>反正我是再也不想体验一遍了。</p><h1 id="关于串子这件事"><a href="#关于串子这件事" class="headerlink" title="关于串子这件事"></a>关于串子这件事</h1><h2 id="不要小瞧EDG所有人的-啊！"><a href="#不要小瞧EDG所有人的-啊！" class="headerlink" title="不要小瞧EDG所有人的____啊！"></a>不要小瞧EDG所有人的____啊！</h2><p>自从kskbl又一次在网上爆火之后，连带着许多梗全部火了。</p><p>咱也不知道为啥，就咱EDG的爆火程度呢，就是连不玩瓦的都能来上两句<code>kskbl？zdjd？wkzkbl!</code></p><h3 id="关于语文课上的串子"><a href="#关于语文课上的串子" class="headerlink" title="关于语文课上的串子"></a>关于语文课上的串子</h3><p>来情景重现一下：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">当时正上着语文课，老师在讲一篇主题是“文学美”的小阅读。</span><br><span class="line"></span><br><span class="line">那当时她讲来劲了，就扯题外话说：“英语里面也有文学美”这之类的话。</span><br><span class="line"></span><br><span class="line">讲的是什么词呢？</span><br><span class="line"></span><br><span class="line">nobody</span><br><span class="line"></span><br><span class="line">她的意思是（我记不太清了，差不多就这个意思）：nobody既可以表示空无一人，也可以表示无人在意。</span><br></pre></td></tr></table></figure><p>这时候下面就有人开始串了。</p><p>老师问：nobody这个词什么意思啊？</p><p>有人答：没有人  ；有人答：小人物  ；也有人答：王森旭。</p><p>等…等等……<br>王森旭？<br><img src="https://cdn.web.small.vvoch.chat/blog/%E5%A4%A7%E5%93%A5%E4%BD%A0%E4%BB%AC%E5%A4%AA%E5%9D%91%E4%BA%86.png" alt="Nobody"><br>wow<br>牛</p><h1 id="最后一个事了，我想感叹一下"><a href="#最后一个事了，我想感叹一下" class="headerlink" title="最后一个事了，我想感叹一下"></a>最后一个事了，我想感叹一下</h1><h2 id="这个班级真的神完了！"><a href="#这个班级真的神完了！" class="headerlink" title="这个班级真的神完了！"></a><strong>这个班级真的神完了！</strong></h2><p>怎么个神法呢？</p><p>人太杂了。</p><blockquote><p>按学习来分的话</p><blockquote><p>有学习成绩非常好的（稳坐第一考场的有好几个）<br>有学习成绩非常差劲的（稳坐倒数一二考场的也有好几个）<br>完全不学但是成绩一样很好的（当然有）</p></blockquote></blockquote><blockquote><p>按抽象程度来分的话</p><blockquote><p>有榆木脑袋<br>有生抽<br>那当然也有老抽</p></blockquote></blockquote><blockquote><p>再来</p><blockquote><p>有南通<br>有拉拉<br>有海王</p></blockquote></blockquote><p><strong>真是神人齐聚一堂啊!</strong></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 日常 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>这学校有点意思我说实话</title>
       <link href="/2026/06/25/%E6%98%AF%E5%B0%8F%E7%94%B7%E5%A8%98%E8%AF%B6/"/>
       <url>/2026/06/25/%E6%98%AF%E5%B0%8F%E7%94%B7%E5%A8%98%E8%AF%B6/</url>
@@ -488,31 +415,6 @@
             <tag> 转载 </tag>
             
             <tag> btfnlll </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>2026-06-24</title>
-      <link href="/2026/06/24/2026-06-24/"/>
-      <url>/2026/06/24/2026-06-24/</url>
-      
-        <content type="html"><![CDATA[<h1 id="关于CDN和EdgeOne的思考"><a href="#关于CDN和EdgeOne的思考" class="headerlink" title="关于CDN和EdgeOne的思考"></a>关于CDN和EdgeOne的思考</h1><p>昨晚果果给我弄了一个<code>EdgeOne</code>（说是无限流量无限时长），我就在想：天底下哪里有这么好的事情？<strong>有猫腻</strong>！<br>今天一想，不对劲！</p><p>既然<code>OSS--&gt;CDN--&gt;User</code>要买两样东西 <code>CDN流量</code>和<code>CDN回流</code><br>那么，<code>OSS--&gt;Edgeone--&gt;User</code>是否也要买个什么回流呢？<br>否则不是直接走的<code>oss流量</code>吗？这玩意死贵死贵的！</p><h2 id="だから晚上回家搜了一下"><a href="#だから晚上回家搜了一下" class="headerlink" title="だから晚上回家搜了一下"></a>だから晚上回家搜了一下</h2><p>他是这么说的：</p><blockquote><p>传统CDN主打内容加速分发，计费模式简单直接，主要按实际使用的流量或带宽阶梯计费，可购买流量包抵扣。</p></blockquote><blockquote><p>EdgeOne则是集加速、安全防护（DDoS&#x2F;WAF）和边缘计算于一体的一站式平台，采用按月套餐订阅制（内含流量额度，超量后按量付费），且其资源包与传统CDN的流量包互不通用。</p></blockquote><p>那..既然这样的话，我还是用cdn吧先。毕竟还有<strong>80来个G流量包</strong>没用呢。可不能浪费呀哈哈！</p><h1 id="之前给咱班做的网站有点恶心到我了"><a href="#之前给咱班做的网站有点恶心到我了" class="headerlink" title="之前给咱班做的网站有点恶心到我了"></a><a href="801.vvoch.chat">之前给咱班做的网站</a>有点恶心到我了</h1><h2 id="在说这件事之前，先得把我的服务器链路弄清楚"><a href="#在说这件事之前，先得把我的服务器链路弄清楚" class="headerlink" title="在说这件事之前，先得把我的服务器链路弄清楚"></a>在说这件事之前，先得把我的服务器链路弄清楚</h2><p>首先，我有一台<code>带宽3Mbps的公网服务器(称作A)</code>+一台<code>200Mbps的公网服务器(称作B)</code>+一台<code>内网服务器（称作C）</code></p><p>之前买A主要是因为挂网站和Napcat、Astrbot，所以没咋注意带宽。</p><p>但是吧，云服务器基本都是虚拟机，所以说呢，<strong>QQ容易检测然后掉线</strong>。</p><p>所以我又购入了一台<code>小主机C</code>放在家里挂QQ。</p><p>但是，由于我<strong>家里没有公网ipv4</strong>，所以在外面访问不到服务器C的管理面板(包括ssh、各种应用的管理面板等等)</p><p>所以又花79块在阿里云弄了一台新用户的<code>大带宽服务器B</code>，和家里那台<code>服务器C</code>组一个<code>内网映射</code>(B挂frps，C挂frpc)</p><h2 id="然后，之前给咱班做的网站是怎么恶心到我的呢？"><a href="#然后，之前给咱班做的网站是怎么恶心到我的呢？" class="headerlink" title="然后，之前给咱班做的网站是怎么恶心到我的呢？"></a>然后，<a href="801.vvoch.chat">之前给咱班做的网站</a>是怎么恶心到我的呢？</h2><p>由于我害怕3Mbps的那台服务器A不够52人同时访问一个网站，于是就用了那一台大带宽<code>服务器B</code>。<br>但是但是，问题就出在这里！</p><p>frp如果要映射网页的话，<strong>就必须要80、443端口</strong>，<br>但是nginx挂网页<strong>也要80、443端口</strong>，<br>就导致这两个东西<strong>冲突了</strong>！</p><p>于是，我为了不影响到他们“订正”用网站，只能改了一下http、https的端口。<br>于是导致了我现在访问我内网机C上的网站时，非要在后面加上端口才行！<br>恶心死了！！！</p><p>だから我在学校就在想，回来搜一下看3Mbps到底够不够52人同时访问。<br>结果很显然，是不够的。<br>Deepseek这样说：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">1. 先看清 3Mbps 的实际传输能力</span><br><span class="line">3Mbps = 3,000,000 bps</span><br><span class="line"></span><br><span class="line">换算成字节：3,000,000 ÷ 8 = 375,000 字节/秒 ≈ 375 KB/秒</span><br><span class="line">这是服务器 上行带宽的理论上限（实际有协议开销，一般按 90%~95% 估算，约 340~350 KB/秒）。</span><br><span class="line"></span><br><span class="line">2. 52 人“同时”访问意味着什么？</span><br><span class="line">如果这 52 个人真的在同一瞬间发起请求（比如刷新页面），服务器需要在短时间内把页面内容传给他们。</span><br><span class="line"></span><br><span class="line">每个人平均能分到的带宽：</span><br><span class="line">375 KB/秒 ÷ 52 ≈ 7.2 KB/秒</span><br><span class="line"></span><br><span class="line">也就是说：要想在 1 秒内让所有人都加载完，每个页面的压缩后总大小不能超过 ≈ 7.2 KB。</span><br><span class="line">如果允许 2~3 秒加载完成，那么页面可以到 14~22 KB 左右。</span><br><span class="line"></span><br><span class="line">3. HTML 网页有多大？</span><br><span class="line">这里区分两种情况：</span><br><span class="line"></span><br><span class="line">✅ 情况一：纯文本 HTML 网页（仅 .html 文件）</span><br><span class="line">一个简单的文本页面（比如几个段落、链接）通常 2~5 KB，启用 Gzip 压缩后可能只有 1~3 KB。</span><br><span class="line"></span><br><span class="line">52 人同时请求，总数据量：52 × 3 KB = 156 KB，远小于 375 KB，1 秒内完全可以传完。</span><br><span class="line"></span><br><span class="line">结论：这种情况下 3Mbps 基本够用。</span><br><span class="line"></span><br><span class="line">❌ 情况二：包含图片、CSS、JS 的普通网页</span><br><span class="line">现在一个普通页面（HTML + CSS + JS + 图片）总大小轻松超过 200 KB，甚至上 MB。</span><br><span class="line"></span><br><span class="line">如果按 200 KB 算，52 人同时加载需要：200 KB × 52 = 10,400 KB ≈ 10.4 MB</span><br><span class="line">需要的带宽 ≈ 10.4 MB × 8 = 83.2 Mbps —— 3Mbps 远远不够。</span><br><span class="line"></span><br><span class="line">实际表现：带宽会瞬间打满，大部分用户需要排队，页面可能十几秒甚至更久才能出来。</span><br><span class="line"></span><br><span class="line">4. 还要考虑的现实因素</span><br><span class="line">请求开销：TCP 握手、HTTP 头部等会占用一些带宽，实际有效载荷会更低。</span><br><span class="line"></span><br><span class="line">浏览器并发：浏览器会同时请求页面上的多个资源（CSS、图片等），即使用户只打开一个网页，也会产生很多并发连接，进一步增加带宽压力。</span><br><span class="line"></span><br><span class="line">是否真的“同时”：真实场景中，52 个访问通常有几秒的分散，峰值需求会略低，但作为容量评估，按“同时并发”计算是安全的。</span><br><span class="line"></span><br><span class="line">其他服务：服务器本身可能还有系统更新、SSH 等其他流量，会挤占这 3Mbps。</span><br></pre></td></tr></table></figure><p>所以…唉…还是就着他们吧。</p><h1 id="学校趣事"><a href="#学校趣事" class="headerlink" title="学校趣事"></a>学校趣事</h1><h2 id="17-53英语考试中"><a href="#17-53英语考试中" class="headerlink" title="17:53英语考试中"></a>17:53英语考试中</h2><p>咱武老师路过龙xx的时候，说了一句 <code>菜就多练</code><br>靠靠靠<br>笑死我了</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 日常 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
             
         </tags>
       
@@ -538,31 +440,6 @@
         <tags>
             
             <tag> 日常 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>2026/06/23</title>
-      <link href="/2026/06/23/2026-06-23/"/>
-      <url>/2026/06/23/2026-06-23/</url>
-      
-        <content type="html"><![CDATA[<h1 id="关于域名的问题"><a href="#关于域名的问题" class="headerlink" title="关于域名的问题"></a>关于域名的问题</h1><p>今天在学校就在想，我这个<code>blog</code>是托管在<code>githubPages</code>上的，然后我不知道会不会审核到二级域名影响到我的备案(<a href = "https://vvoch.chat"><code>vvoch.chat</code></a>)。</p><p>要是我往里面放了一些…咋说…违规的东西吧，，怕给我域名弄没了。</p><p>所以刚刚我干脆又买了个域名<code>vvoch.cn</code>，花了33块。</p><p>想来这样应该就不会挂了吧。</p><p>等域名审核通过之后我把我这个blog直接转到<code>vvoch.cn</code>这个域名上去。反正是托管在<code>githubPages</code>上的不用备案。</p><p>现在就只有干等<code>“CNNIC 注册局命名审核中”</code>这玩意了。</p><h1 id="学校的趣事"><a href="#学校的趣事" class="headerlink" title="学校的趣事"></a>学校的趣事</h1><p>今天下午<code>15:30</code>的时候，上语文课。</p><p>余老师让我们写作文的要素与内涵，她下来巡视。</p><p>结果，看到我身后的一位同学(不知道是谁)的时候，说了一句非常抽象的话。</p><p><code>对的对的，写得好！</code> 然后又补了一句 <strong><code>关中王来了</code></strong></p><p>顿时全班整个就炸开了，笑死笑死，真的。</p><h1 id="回家之后"><a href="#回家之后" class="headerlink" title="回家之后"></a>回家之后</h1><p>一回家，本想来写日记的，一进我的blog网站，发现：诶！我的rikka咋没了？一看，所有用了<code>cdn</code>的图片都没了！</p><p>一时间我顿感不妙，因为还有我们班上的试卷订正在腾讯<code>oss</code>上挂着。要是<code>cdn</code>炸了视频也看不了了！</p><p>于是我赶紧看是什么原因。结果看到一条短信：<code>【腾讯云】尊敬的腾讯云用户，你好。截至北京时间2026-06-23 10:09:09，您的账号（账号ID：100031808307，昵称：Jan_Vvoch）已欠费0.02元（含按量计费冻结金额），您的按量计费资源：内容分发网络 CDN已于今日停服。资源停服后无法继续使用，资源释放后数据将无法找回。您可前往“腾讯云助手”小程序查询扣费明细并快速充值 https://mc.tencent.com/cxSbrGgt ，以免影响资源正常使用。更多信息请查阅站内信或邮件。</code></p><p>www我真就是一整个裂了。我还寻思说<code>100G的cdn流量</code>+<code>50G的cdn回流</code>全用完了呢！</p><p>于是我赶紧去看。</p><p>呼~还好，只是<code>oss</code>当时直链测试的40MB欠费了。吓死宝宝了！</p><h1 id="我真是SB"><a href="#我真是SB" class="headerlink" title="我真是SB"></a>我真是SB</h1><p>靠 买了个鬼cn域名 又贵 还有审核 严的很 c 我还想放点比较emm的内容在我blog上呢</p><p>于是我又买了个<code>jvvoch.space</code> 嘻嘻</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 日常 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
             
         </tags>
       
