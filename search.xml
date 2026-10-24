@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>ArchLinux中玩MC的自我感受</title>
+      <link href="/2026/10/25/ArchLinux%E4%B8%AD%E7%8E%A9MC%E7%9A%84%E8%87%AA%E6%88%91%E6%84%9F%E5%8F%97/"/>
+      <url>/2026/10/25/ArchLinux%E4%B8%AD%E7%8E%A9MC%E7%9A%84%E8%87%AA%E6%88%91%E6%84%9F%E5%8F%97/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇文章主要写了我在换用arch后玩minecraft这款游戏的经历<br>就当记事写了</p><p>我感觉我为了在arch上玩到mc可以说是呕心沥血，最后发现其实得来全不费功夫，只是路没选对罢了。</p><h1 id="vibecoding-PCL这件事"><a href="#vibecoding-PCL这件事" class="headerlink" title="vibecoding PCL这件事"></a>vibecoding PCL这件事</h1><p>首先，因为近期了解到了关于“PCL被举报，国内起动器下载失效”等信息吧，我在学校时就写了，说“回去之后把pcl源码clone下来，让dsh搓个linux版本出来”(这是原话)</p><p>然后等到回家了就开始vibecoding</p><p>结果嘛……如果成功了就不会有这篇文章了</p><p>可能是这个任务对于大肥鱼来说太艰巨了吧</p><p>如下图</p><p><img src="https://cdn.web.small.vvoch.chat/blog/archPlayMC/deepseek%E4%BB%B7%E6%A0%BC.png" alt="image"></p><p>花了这么多token做出来的东西依旧不尽如人意</p><p>那还有啥招呢？现在linux下的MC启动器这么少，也没人去做，做了的也没有arch,很伤。</p><p>所以我就又去世了Prism Launcher<br><img src="https://cdn.web.small.vvoch.chat/blog/archPlayMC/Prism%20Launcher.png" alt="image"></p><h1 id="使用Prism-Launcher时遇到的问题"><a href="#使用Prism-Launcher时遇到的问题" class="headerlink" title="使用Prism Launcher时遇到的问题"></a>使用Prism Launcher时遇到的问题</h1><p>在我体验Prism Launcher的过程中，我又遇到了一些难以解决的问题。</p><p>在使用Prism Launcher启动mc的时候，一直报错这个<br><img src="https://cdn.web.small.vvoch.chat/blog/archPlayMC/Prism%20Launcher%E6%8A%A5%E9%94%99.png" alt="image"></p><p>我于是就去查解决方法。</p><p>chatgpt、deepseek、bilibili问烂了，可…</p><p>没事，没事，我这样安慰着我自己</p><p>可能因为linux用户本身比较少，arch就更少了</p><p>再加上我用的还不是主流的kde,而是niri+wayland方案，那….没招了</p><h1 id="还是hmcl香"><a href="#还是hmcl香" class="headerlink" title="还是hmcl香"></a>还是hmcl香</h1><p>在尝试这老些方案都没用后，我没招了，直接开摆（毕竟玩mc这件事进windows也是一样的嘛）</p><p>就这时，我的抖音仿佛知道我在想什么，说时迟那时快就给我推了一条“Linux上HMCL的使用”</p><p>我看到这条视频仿佛又像是看到了一丝微光透入暗无天日的山洞里</p><p>于是，去try了tryHMCL这个东西</p><p>其实本身只是抱着试试的态度，毕竟我刚刚调了这么半天都没好，怎么可能换个启动器就好了呢？</p><p>在点击“启动游戏”的那一刻，我的心早已钉在钢板上，仿佛一切的结局已经注定。</p><p>可是命运就喜欢捉弄人，在你放弃一切希望时，将胜利摆在你的面前。</p><p>当看到熟悉的“MOjang”加上那刺眼的红背景，我恍惚了</p><p>竟然真的能进去？！</p><p>哦我的上帝<br>这简直是太美妙了，亲爱的</p><p>我将永世追随您，尊敬的HMCL大人！</p><p>虽然并不知道原理就是了</p><p>嘿嘿</p><p><img src="https://cdn.web.small.vvoch.chat/blog/archPlayMC/MC.png" alt="image"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日常 </tag>
+            
+            <tag> 长文章 </tag>
+            
+            <tag> MC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>从Windows换到ArchLinux的感想</title>
       <link href="/2026/10/18/%E4%BB%8EWindows%E6%8D%A2%E5%88%B0ArchLinux%E7%9A%84%E6%84%9F%E6%83%B3/"/>
       <url>/2026/10/18/%E4%BB%8EWindows%E6%8D%A2%E5%88%B0ArchLinux%E7%9A%84%E6%84%9F%E6%83%B3/</url>
@@ -175,25 +198,6 @@
     
     
     <entry>
-      <title>啧</title>
-      <link href="/2026/07/01/%E5%95%A7/"/>
-      <url>/2026/07/01/%E5%95%A7/</url>
-      
-        <content type="html"><![CDATA[<p>转载自<a href="https://v.douyin.com/6v-RwHwkmJI/ ">抖音@苏o</a></p><p>原作者文案：不懂什么是爱意，只知道散步要并肩，下意识靠近对方。<br><img src="https://cdn.web.small.vvoch.chat/blog/%E8%BD%AC%E8%BD%BD/%E5%95%A7.jpg" alt="image"><br>侵删</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 转载 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>电子文盲</title>
       <link href="/2026/06/30/%E5%85%B3%E4%BA%8E%E7%94%B5%E5%AD%90%E6%96%87%E7%9B%B2/"/>
       <url>/2026/06/30/%E5%85%B3%E4%BA%8E%E7%94%B5%E5%AD%90%E6%96%87%E7%9B%B2/</url>
@@ -252,9 +256,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> MC </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -281,9 +285,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> MC </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -310,9 +314,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> MC </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -337,9 +341,9 @@
       
         <tags>
             
-            <tag> 转载 </tag>
-            
             <tag> 长文章 </tag>
+            
+            <tag> 转载 </tag>
             
         </tags>
       
@@ -366,9 +370,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> MC </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
