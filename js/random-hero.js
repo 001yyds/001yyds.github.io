@@ -1,4 +1,4 @@
-/* 首页 banner 随机图 —— 按包等概率抽，一轮内不重复 */
+/* 全站 banner 随机图（文章页除外）——按包等概率抽，一轮内不重复 */
 (function () {
   var CDN = 'https://cdn.web.small.vvoch.chat/';
   var GROUPS = {
@@ -110,9 +110,6 @@
 };
   var WEIGHT = { ba: 1, loli: 1, anime: 1, eromanga: 1, kaguya: 1, onimai: 1 };
 
-  var p = location.pathname;
-  if (p !== '/' && p !== '/index.html') return;
-
   var keys = Object.keys(GROUPS).filter(function (k) { return GROUPS[k].length; });
   var total = 0;
   keys.forEach(function (k) { total += (WEIGHT[k] || 1); });
@@ -132,10 +129,19 @@
 
   document.documentElement.style.setProperty('--hero-img', 'url("' + url + '")');
   document.documentElement.setAttribute('data-hero', '1');
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var h = document.getElementById('page-header');
+    if (h && h.classList.contains('post-bg')) {          // 文章页：保留自己的封面
+      document.documentElement.removeAttribute('data-hero');
+      return;
+    }
+    var l = document.createElement('link');               // 其余页面：预加载
+    l.rel = 'preload'; l.as = 'image'; l.href = url;
+    document.head.appendChild(l);
+  });
+
   var probe = new Image();
   probe.onerror = function () { document.documentElement.removeAttribute('data-hero'); };
   probe.src = url;
-  var l = document.createElement('link');
-  l.rel = 'preload'; l.as = 'image'; l.href = url;
-  document.head.appendChild(l);
 })();

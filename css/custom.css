@@ -3,12 +3,14 @@ body.category-indent #article-container p {
   text-indent: 2em;
 }
 
-/* 首页 banner 随机图：由 /js/random-hero.js 设置 --hero-img，只在首页生效 */
-html[data-hero] #page-header {
+/* 全站 banner 随机图：由 /js/random-hero.js 设置 --hero-img
+   首页(full_page)、标签、归档、分类、关于(not-home-page) 都生效
+   文章页(.post-bg)保留自己的封面，不覆盖 */
+html[data-hero] #page-header:not(.post-bg) {
   background-image: var(--hero-img) !important;
   background-position: center 30% !important;
   background-repeat: no-repeat !important;
 }
 @media (max-width: 768px) {
-  html[data-hero] #page-header { background-attachment: scroll !important; }
+  html[data-hero] #page-header:not(.post-bg) { background-attachment: scroll !important; }
 }
