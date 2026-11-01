@@ -94,10 +94,21 @@
     "BLOGPictureHead/kaguya/10.jpg",
     "BLOGPictureHead/kaguya/11.jpg",
     "BLOGPictureHead/kaguya/12.jpg"
+  ],
+  "onimai": [
+    "BLOGPictureHead/onimai/01.jpg",
+    "BLOGPictureHead/onimai/02.jpg",
+    "BLOGPictureHead/onimai/03.png",
+    "BLOGPictureHead/onimai/04.png",
+    "BLOGPictureHead/onimai/05.png",
+    "BLOGPictureHead/onimai/06.png",
+    "BLOGPictureHead/onimai/07.jpg",
+    "BLOGPictureHead/onimai/08.jpg",
+    "BLOGPictureHead/onimai/09.jpg",
+    "BLOGPictureHead/onimai/10.png"
   ]
 };
-  // 每个包的权重，想让谁多出现就调大
-  var WEIGHT = { ba: 1, loli: 1, anime: 1, eromanga: 1, kaguya: 1 };
+  var WEIGHT = { ba: 1, loli: 1, anime: 1, eromanga: 1, kaguya: 1, onimai: 1 };
 
   var p = location.pathname;
   if (p !== '/' && p !== '/index.html') return;
@@ -108,13 +119,12 @@
   var r = Math.random() * total, pick = keys[0];
   for (var i = 0; i < keys.length; i++) { r -= (WEIGHT[keys[i]] || 1); if (r <= 0) { pick = keys[i]; break; } }
 
-  var bagKey = 'heroBag_' + pick;
-  var bag;
+  var bagKey = 'heroBag_' + pick, bag;
   try { bag = JSON.parse(sessionStorage.getItem(bagKey) || '[]'); } catch (e) { bag = []; }
   if (!bag.length) {
     bag = GROUPS[pick].slice();
     for (var j = bag.length - 1; j > 0; j--) {
-      var t = Math.floor(Math.random() * (j + 1)); var tmp = bag[j]; bag[j] = bag[t]; bag[t] = tmp;
+      var t = Math.floor(Math.random() * (j + 1)), tmp = bag[j]; bag[j] = bag[t]; bag[t] = tmp;
     }
   }
   var url = CDN + bag.pop();
@@ -122,11 +132,9 @@
 
   document.documentElement.style.setProperty('--hero-img', 'url("' + url + '")');
   document.documentElement.setAttribute('data-hero', '1');
-
   var probe = new Image();
   probe.onerror = function () { document.documentElement.removeAttribute('data-hero'); };
   probe.src = url;
-
   var l = document.createElement('link');
   l.rel = 'preload'; l.as = 'image'; l.href = url;
   document.head.appendChild(l);
