@@ -1,0 +1,14 @@
+/* 导航菜单居中 + 搜索靠右 */
+#nav .menus_items {
+  position: absolute;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#nav #menus {
+  flex: 1;
+  display: flex;
+}
+#nav #search-button {
+  margin-left: auto;
+}
