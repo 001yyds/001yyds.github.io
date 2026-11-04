@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.web.small.vvoch.chat/blog/touxiang.jpg">
 <meta property="article:published_time" content="2026-10-18T13:45:00.000Z">
-<meta property="article:modified_time" content="2026-10-18T14:05:44.909Z">
+<meta property="article:modified_time" content="2026-11-04T14:17:17.907Z">
 <meta property="article:author" content="Vvoch">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.web.small.vvoch.chat/blog/touxiang.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="https://cdn.web.small.vvoch.chat/blog/QQ%E5%9B%BE%E7%89%8720260621152748.png"><link rel="canonical" href="https://blog.vvoch.cn/album/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
@@ -321,6 +321,7 @@
   1. 把图片丢进 source/album/ 文件夹（jpg / png / webp / gif / avif 都行）
   2. 重新生成，照片会按「拍摄时间」自动排好，最新的排最前面
      （读 EXIF，没有就用文件修改时间），说明文字默认用文件名
+     排列是从左到右铺满一行再换行：最新的一张在左上角
   3. 想改顺序 / 换说明文字 / 用 CDN 外链：编辑 source/_data/album.yml
      （写进去的按里面的顺序排，没写的按时间排在后面）
   4. 上面那行 ALBUM 占位符会被自动替换成照片墙，别删掉
@@ -424,6 +425,38 @@
   #photos.album-grid { columns: 3; }
 }
 
+/* ---------- 横向排布（由页面底部的脚本接管） ----------
+   CSS 多列是「填满一列再填下一列」，读起来是竖着的；
+   脚本按 0,1,2 / 3,4,5 … 把照片分进各列，就变成从左到右。
+   没开 JS 时退回上面的多列布局，照片不会丢。 */
+#photos.album-grid.album-horizontal {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px 8px; /* 行间距 2px，列间距 8px */
+  columns: auto;
+}
+
+#photos.album-grid.album-horizontal .album-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* 列容器里的照片不再需要下边距，间距交给 gap */
+#photos.album-grid.album-horizontal .album-item {
+  margin: 0;
+}
+
+/* 窗口尺寸变化、重新分列时，不要重播淡入动画 */
+#photos.album-grid.album-settled .album-fade {
+  animation: none;
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
 .album-item {
   position: relative;
   margin: 0 0 2px;
@@ -522,6 +555,52 @@
   .album-cap span { font-size: .92rem; }
 }
 </style>
+
+<script>
+/* 把照片改成「从左到右」排列
+   CSS 多列只能按列填（竖着读），这里按 0,1,2 / 3,4,5 … 分进各列，
+   于是第一行就是最新上传的几张，铺满一行再换行。 */
+(function () {
+  var grid = document.getElementById('photos')
+  if (!grid) return
+
+  var items = Array.prototype.filter.call(grid.children, function (el) {
+    return el.classList.contains('album-item')
+  })
+  if (!items.length) return
+
+  var wide = window.matchMedia('(min-width: 640px)')
+  var count = 0 // 当前列数，0 表示还没排过
+
+  function build () {
+    var next = wide.matches ? 3 : 2
+    if (next === count) return
+
+    var first = count === 0
+    count = next
+
+    var cols = []
+    for (var i = 0; i < count; i++) {
+      var col = document.createElement('div')
+      col.className = 'album-col'
+      cols.push(col)
+    }
+
+    // 第 i 张进第 i % 列，保证顺序是从左到右、再换行
+    items.forEach(function (item, i) {
+      cols[i % count].appendChild(item)
+    })
+
+    grid.replaceChildren.apply(grid, cols)
+    grid.classList.add('album-horizontal')
+    if (!first) grid.classList.add('album-settled')
+  }
+
+  build()
+  if (wide.addEventListener) wide.addEventListener('change', build)
+  else wide.addListener(build) // 老浏览器兜底
+})()
+</script>
 </div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Vvoch</span></div><div class="footer_custom_text"><a href="https://icp.gov.moe/?keyword=20266670" target="_blank"><img class="icp-icon" src="https://icp.gov.moe/favicon.ico"><span>萌ICP备20266670号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script>document.addEventListener('mousedown',function(e){try{var t=new Touch({identifier:Date.now(),target:e.target,clientX:e.clientX,clientY:e.clientY,screenX:e.screenX,screenY:e.screenY,pageX:e.pageX,pageY:e.pageY});document.dispatchEvent(new TouchEvent('touchstart',{touches:[t],changedTouches:[t],bubbles:!0,cancelable:!0}))}catch(e){}})</script><script>(function(){var tags=document.querySelectorAll('.post-meta__tags');for(var i=0;i<tags.length;i++){if(tags[i].textContent.trim()==='长文章'){document.body.classList.add('category-indent');break;}}})()</script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
