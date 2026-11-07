@@ -1,0 +1,397 @@
+/* ==============================================================
+   项目页（/projects/）
+   配色跟随博客主题：主色 #F47466，深色模式自动切换
+   ============================================================== */
+
+/* 关掉侧边栏后放宽卡片，两列项目才铺得开 */
+.type-projects .layout { max-width: 1300px; }
+.type-projects #page { padding: 28px 22px 40px; }
+
+@media (max-width: 768px) {
+  .type-projects #page { padding: 24px 14px 34px; }
+}
+
+/* ---------- 颜色变量（浅色） ---------- */
+.pj-page {
+  --pj-accent: #f47466;
+  /* 需要当正文读的珊瑚色：比主色深一档，保证对比度够看得清 */
+  --pj-accent-text: #c8432f;
+  --pj-accent-soft: rgba(244, 116, 102, .12);
+  --pj-card-bg: rgba(244, 116, 102, .03);
+  --pj-card-bg-hover: rgba(244, 116, 102, .06);
+  --pj-border: rgba(31, 45, 61, .12);
+  --pj-border-hover: rgba(244, 116, 102, .42);
+  --pj-muted: rgba(31, 45, 61, .66);
+  --pj-chip: rgba(31, 45, 61, .055);
+  --pj-shadow: rgba(31, 45, 61, .16);
+  --pj-glow: rgba(244, 116, 102, .1);
+}
+
+/* ---------- 颜色变量（深色） ---------- */
+[data-theme="dark"] .pj-page {
+  --pj-accent: #ff9a8d;
+  --pj-accent-text: #ff9a8d;
+  --pj-accent-soft: rgba(255, 154, 141, .16);
+  --pj-card-bg: rgba(255, 255, 255, .032);
+  --pj-card-bg-hover: rgba(255, 255, 255, .062);
+  --pj-border: rgba(255, 255, 255, .1);
+  --pj-border-hover: rgba(255, 154, 141, .46);
+  --pj-muted: rgba(255, 255, 255, .56);
+  --pj-chip: rgba(255, 255, 255, .075);
+  --pj-shadow: rgba(0, 0, 0, .55);
+  --pj-glow: rgba(255, 154, 141, .12);
+}
+
+/* ============ 顶部引言 ============
+   标题交给主题的横幅（顶部壁纸）显示，这里只留一句引言 */
+.pj-lead {
+  margin: 0 0 30px;
+  max-width: 700px;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--pj-muted);
+}
+
+@media (min-width: 768px) {
+  .pj-lead { font-size: 1.08rem; }
+}
+
+/* ============ 分区标题 ============ */
+.pj-section { margin: 0; }
+.pj-section + .pj-section { margin-top: 46px; }
+
+.pj-section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.pj-section-title {
+  position: relative;
+  margin: 0;
+  padding-left: 15px;
+  font-size: 1.18rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--text-highlight-color);
+}
+
+/* 标题左边那根主色小竖条 */
+.pj-section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 1.02em;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  background: var(--pj-accent);
+}
+
+.pj-section-count {
+  min-width: 22px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--pj-accent-soft);
+  color: var(--pj-accent-text);
+  font-size: .76rem;
+  font-weight: 800;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.pj-section-desc {
+  margin: 6px 0 18px;
+  padding-left: 15px;
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--pj-muted);
+}
+
+.pj-section-head + .pj-grid { margin-top: 16px; }
+
+/* ============ 卡片网格 ============ */
+.pj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .pj-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ============ 卡片 ============ */
+.pj-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 22px;
+  border: 1px solid var(--pj-border);
+  border-radius: 14px;
+  background: var(--pj-card-bg);
+  overflow: hidden;
+  transition:
+    transform .2s cubic-bezier(.23, 1, .32, 1),
+    border-color .2s ease,
+    background-color .2s ease,
+    box-shadow .2s ease;
+  animation: pj-in .5s cubic-bezier(.23, 1, .32, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+/* 左上角一点点主色光晕，鼠标移上去才出现 */
+.pj-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(120% 100% at 0% 0%, var(--pj-glow), transparent 62%);
+  transition: opacity .25s ease;
+}
+
+@keyframes pj-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.pj-card--featured {
+  grid-column: 1 / -1;
+  padding: 24px 26px;
+  gap: 18px;
+}
+
+.pj-card--featured .pj-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 15px;
+}
+
+.pj-card--featured .pj-icon i { font-size: 22px; }
+
+.pj-card--featured .pj-name {
+  font-size: 1.22rem;
+  margin-top: 0;
+}
+
+.pj-card--featured .pj-text {
+  font-size: .97rem;
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .pj-card--featured { padding: 20px 22px; }
+  .pj-card--featured .pj-icon { width: 46px; height: 46px; border-radius: 13px; }
+  .pj-card--featured .pj-icon i { font-size: 19px; }
+  .pj-card--featured .pj-name { font-size: 1.08rem; }
+  .pj-card--featured .pj-text { font-size: .92rem; margin-top: 7px; }
+}
+
+/* 悬浮：整张卡片轻轻抬起来（只在真有鼠标的设备上） */
+@media (hover: hover) and (pointer: fine) {
+  .pj-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--pj-border-hover);
+    background: var(--pj-card-bg-hover);
+    box-shadow: 0 14px 30px -18px var(--pj-shadow);
+  }
+
+  .pj-card:hover::before { opacity: 1; }
+  .pj-card:hover .pj-arrow {
+    color: var(--pj-accent-text);
+    transform: translateX(3px);
+  }
+}
+
+.pj-card:active { transform: translateY(-1px) scale(.997); }
+
+/* 键盘 Tab 到的焦点框 */
+.pj-name a:focus-visible {
+  outline: 2px solid var(--pj-accent-text);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- 卡片上半部分 ---------- */
+.pj-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.pj-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: var(--pj-accent-soft);
+  border: 1px solid var(--pj-border);
+  font-size: 22px;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.pj-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+}
+
+/* Font Awesome 图标 */
+.pj-icon i {
+  font-size: 19px;
+  line-height: 1;
+  color: var(--pj-accent);
+}
+
+.pj-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pj-name {
+  /* 主题给所有标题加了 position: relative，会让下面的点击热区缩到标题大小 */
+  position: static;
+  margin: 1px 0 0;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text-highlight-color);
+  overflow-wrap: anywhere;
+}
+
+/* 主题的 `.container a` 优先级更高，这里要多加一层 .pj-page 才能盖住 */
+.pj-page .pj-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pj-page .pj-name a:hover { color: var(--pj-accent-text); }
+
+/* 让整张卡片都能点：热点铺满 .pj-card（它是 position: relative） */
+.pj-name a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 14px;
+}
+
+.pj-text {
+  margin: 7px 0 0;
+  font-size: .92rem;
+  line-height: 1.62;
+  color: var(--pj-muted);
+  overflow-wrap: anywhere;
+}
+
+.pj-arrow {
+  flex: 0 0 auto;
+  margin-top: 5px;
+  font-size: .82rem;
+  color: var(--pj-muted);
+  opacity: .7;
+  transition: transform .2s cubic-bezier(.23, 1, .32, 1), color .2s ease, opacity .2s ease;
+}
+
+.pj-card:hover .pj-arrow { opacity: 1; }
+
+/* ---------- 卡片下半部分 ---------- */
+.pj-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pj-tags li {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--pj-chip);
+  color: var(--pj-muted);
+  font-size: .72rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.pj-links {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.pj-page a.pj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--pj-accent-text);
+  background: transparent;
+  font-size: .77rem;
+  font-weight: 700;
+  line-height: 1.6;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .18s ease, transform .16s cubic-bezier(.23, 1, .32, 1);
+}
+
+.pj-link i { font-size: .92em; }
+
+.pj-page a.pj-link:hover i { color: inherit; }
+
+@media (hover: hover) and (pointer: fine) {
+  .pj-page a.pj-link:hover {
+    color: var(--pj-accent-text);
+    background: var(--pj-accent-soft);
+  }
+}
+
+.pj-link:active { transform: scale(.95); }
+
+.pj-link:focus-visible {
+  outline: 2px solid var(--pj-accent-text);
+  outline-offset: 2px;
+}
+
+/* ---------- 空状态 ---------- */
+.pj-empty {
+  margin: 26px 0 10px;
+  font-size: .95rem;
+  color: var(--pj-muted);
+}
+
+/* ---------- 减少动态效果 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .pj-card {
+    animation: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+
+  .pj-card:hover { transform: none; }
+
+  .pj-card:hover .pj-arrow { transform: none; }
+}
