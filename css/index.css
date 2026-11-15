@@ -3799,6 +3799,11 @@ figure.highlight pre .javascript .function {
   flex: 1;
   padding-right: 20px;
 }
+#aside-content .card-runtime #runtimeshow {
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
 @media screen and (min-width: 901px) {
   #aside-content #card-toc {
     right: 0 !important;

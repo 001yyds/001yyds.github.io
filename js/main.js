@@ -782,13 +782,46 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * 網頁運行時間
    */
-  const addRuntime = () => {
-    const $runtimeCount = document.getElementById('runtimeshow')
-    if ($runtimeCount) {
-      const publishDate = $runtimeCount.getAttribute('data-publishDate')
-      $runtimeCount.textContent = `${btf.diffDate(publishDate)} ${GLOBAL_CONFIG.runtime}`
-    }
+  let runtimeTimer
+  const stopRuntime = () => {
+    clearInterval(runtimeTimer)
+    runtimeTimer = undefined
   }
+
+  const addRuntime = () => {
+    stopRuntime()
+    const $runtimeCount = document.getElementById('runtimeshow')
+    if (!$runtimeCount) return
+
+    const publishTime = Date.parse($runtimeCount.getAttribute('data-publishDate'))
+    if (!Number.isFinite(publishTime)) {
+      $runtimeCount.textContent = '建站时间未配置'
+      return
+    }
+
+    const updateRuntime = () => {
+      if (!$runtimeCount.isConnected) {
+        stopRuntime()
+        return
+      }
+
+      const elapsed = Math.max(0, Math.floor((Date.now() - publishTime) / 1000))
+      const days = Math.floor(elapsed / 86400)
+      const hours = Math.floor(elapsed % 86400 / 3600)
+      const minutes = Math.floor(elapsed % 3600 / 60)
+      const seconds = elapsed % 60
+      const pad = value => String(value).padStart(2, '0')
+      $runtimeCount.textContent = `${days}天${pad(hours)}小时${pad(minutes)}分${pad(seconds)}秒`
+    }
+
+    updateRuntime()
+    if (!document.hidden) runtimeTimer = setInterval(updateRuntime, 1000)
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? stopRuntime() : addRuntime()
+  })
+  btf.addGlobalFn('pjaxSend', stopRuntime, 'stopRuntime')
 
   /**
    * 最後一次更新時間
